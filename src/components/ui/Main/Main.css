@@ -1,0 +1,45 @@
+
+.app-main {
+    position: relative;
+    width: 58.33333%;
+}
+
+.app-main:before, 
+.app-main:after {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+}
+
+.app-main:after {
+    top: auto;
+    bottom: 0;
+}
+
+.app-main-text {
+    height: 550px;
+    padding: 45px 60px;
+    overflow: auto;
+}
+
+.app-main-item {
+    display: none;
+    overflow: hidden;
+}
+
+.app-main-item.is-active {
+    display: block;
+}
+
+@media (max-height: 550px) {
+    
+    .app-main-text {
+        height: 100vh;
+    }
+}

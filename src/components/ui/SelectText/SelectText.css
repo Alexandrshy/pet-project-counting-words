@@ -1,0 +1,10 @@
+.select-text-list--blocked select {
+    pointer-events: none;
+    color: #666666b5;
+}
+
+.select-text-item {
+    display: inline-block;
+    margin: 0 10px;
+    text-align: left;
+}

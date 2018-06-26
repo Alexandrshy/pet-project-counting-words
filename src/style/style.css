@@ -1,0 +1,131 @@
+@import "~normalize.css";
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+.button {
+    position: relative;
+    padding: .8em 1.7em;
+    border: .2em solid #7160E8;
+    background-color: #7160E8;
+    outline:none;
+    cursor: pointer;
+}
+
+.button span {
+    z-index: 1;
+    position: relative;
+    color: #fff;
+    line-height: 1em;
+    font-size: 1em;
+}
+
+.button:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    transition: height .2s;
+    background-color: rgba(0,0,0,.25);
+}
+
+.button:hover:before {
+    height: 100%;
+}
+
+.select {
+    display: block;
+    min-width: 100px;
+    padding: .4em;
+    margin-top: 5px;
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0,0,0,.1);
+    transition: all .2s;
+    font-size: 1rem;
+    line-height: 1;
+    outline: none;
+}
+
+.label {
+    font-size: .85rem;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #7160E8;
+}
+
+.wrapper:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc((50% - ((1024px / 12) * 2)));
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+}
+
+.wrapper:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: calc((50% + ((1024px / 12) * 1)));
+    width: calc(1024px / 12);
+    height: 100%;
+    background-color: rgba(0,0,0,.15);
+}
+
+.container {
+    z-index: 1;
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 550px;
+    max-width: 1024px;
+    background-color: #fff;
+}
+
+.app-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.app-menu {
+    width: 8.33333%;
+    background-color: #cccccc42;
+}
+
+@media (max-height: 550px) {
+
+    .container {
+        height: auto;
+    }
+}

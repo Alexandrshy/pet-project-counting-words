@@ -1,0 +1,47 @@
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+}
+
+.nav-item.is-active {
+    background-color: #7160E8;
+}
+
+.nav-item.is-active svg {
+    fill: #fff;
+}
+
+.nav-item.is-active .nav-button {
+    cursor: default;
+    pointer-events: none;
+}
+
+.nav-item.is-active .nav-button svg {
+    opacity: 1;
+}
+
+.nav-button {
+    display: block;
+    width: 100%;
+    height: 110px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.nav-button svg {
+    opacity: 0.85;
+}

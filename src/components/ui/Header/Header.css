@@ -1,0 +1,40 @@
+.app-header {
+    width: 33.33333%;
+    padding: 50px 25px 25px;
+    text-align: center;
+    color: #fff;
+    background-color: #6052c5;
+}
+
+.app-header-title {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+}
+
+.app-header-text {
+    font-size: 1rem;
+    line-height: 1.45;
+    color: #d1cdee;
+}
+
+.app-header-select {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.app-header-timer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,.13);
+}
+
+.app-header-timer-button {
+    margin: 0 10px;
+}
+
+@media (max-height: 550px) {
+    
+    .app-header {
+        height: 100vh;
+        overflow: auto;
+    }
+}
