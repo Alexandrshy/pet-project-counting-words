@@ -9,7 +9,8 @@ type Props = {
         id: string,
         title: string,
         author: string,
-        text: string
+        text: string,
+        textHTML: string
     }>;
     blocked: boolean;
 }
@@ -19,7 +20,8 @@ type State = {
         id: string,
         title: string,
         author: string,
-        text: string
+        text: string,
+        textHTML: string
     }>;
     language: string;
     level: string;

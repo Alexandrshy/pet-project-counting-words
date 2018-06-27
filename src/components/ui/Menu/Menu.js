@@ -3,6 +3,7 @@
 import React from 'react';
 import IconStopwatch from '../Icon/IconStopwatch';
 import IconList from '../Icon/IconList';
+import IconResult from '../Icon/IconResult';
 import './Menu.css';
 
 const Menu = ({onNavClick=f=>f, navSelected}: {onNavClick: Function, navSelected: string}) => 
@@ -19,6 +20,12 @@ const Menu = ({onNavClick=f=>f, navSelected}: {onNavClick: Function, navSelected
                     className="nav-button"
                     name="list"
                     onClick={onNavClick}><IconList color="#595959" /></button>
+            </li>
+            <li className={`nav-item${navSelected === 'result' ? ' is-active' : ''}`}>
+                <button 
+                    className="nav-button"
+                    name="result"
+                    onClick={onNavClick}><IconResult color="#595959" /></button>
             </li>
         </ul>
     </nav>

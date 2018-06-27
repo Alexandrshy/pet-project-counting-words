@@ -11,12 +11,6 @@ import './style/style.css';
 type Props = {}
 
 type State = {
-    fragments: Array<{
-        id: string,
-        title: string,
-        author: string,
-        text: string
-    }>;
     navSelected: string;
     timerRunning: boolean;
     timerVisible: boolean;
@@ -28,23 +22,42 @@ class App extends PureComponent<Props, State> {
         super(props);
 
         this.state = {
-            fragments: dataArray,
             navSelected: 'stopwatch',
             timerRunning: false,
             timerVisible: false,
-            activeTextID: "0ff0c770-3198-495d-aff1-8e4ee41197fb"
+            activeTextID: '0ff0c770-3198-495d-aff1-8e4ee41197fb',
+            result: {
+                words: 0,
+                symbols: 0,
+                time: 0,
+                speedReadingWords: 0,
+                speedReadingSymbols: 0,
+            }
         }
 
         this.handleNavClick = this.handleNavClick.bind(this);
+        this.handleChangeNav = this.handleChangeNav.bind(this);
+        this.handleSaveResult = this.handleSaveResult.bind(this);
         this.handleTimerRunning = this.handleTimerRunning.bind(this);
         this.handleTimerVisible = this.handleTimerVisible.bind(this);
     }
 
+    handleSaveResult = (data) => {
+        this.setState(prevState => ({
+            result: {
+                ...prevState.result,
+                ...data
+            }
+        }))
+    }
+
     handleNavClick = (event) => {
         event.preventDefault();
-        this.setState({navSelected: event.currentTarget.getAttribute('name')});
-        this.handleTimerRunning(false);
-        this.handleTimerVisible(false);
+        this.handleChangeNav(event.currentTarget.getAttribute('name'));
+    }
+
+    handleChangeNav = (name) => {
+        this.setState({navSelected: name})
     }
 
     handleTimerRunning = (item) => {
@@ -60,27 +73,32 @@ class App extends PureComponent<Props, State> {
     }
 
     render() {
-        const { fragments, navSelected } = this.state;
+        const { navSelected, timerRunning, timerVisible, activeTextID, result } = this.state;
 
         return (
             <main className="wrapper">
                 <div className="container">
                     <div className="app-grid">
                         <Header 
-                            options={fragments}
-                            timerRunning={this.state.timerRunning}
-                            timerVisible={this.state.timerVisible}
+                            options={dataArray}
+                            timerRunning={timerRunning}
+                            timerVisible={timerVisible}
+                            activeTextID={activeTextID}
                             handleTimerRunning={this.handleTimerRunning}
                             handleTimerVisible={this.handleTimerVisible}
                             handleRefActiveTextID={this.handleRefActiveTextID}
-                            activeTextID={this.state.activeTextID} />
+                            onSaveResult={this.handleSaveResult}
+                            onChangeNav={this.handleChangeNav} />
                         <Menu 
                             navSelected={navSelected}
                             onNavClick={this.handleNavClick} />
                         <Main 
-                            options={fragments} 
+                            options={dataArray} 
                             navSelected={navSelected}
-                            activeTextID={this.state.activeTextID} />
+                            timerRunning={timerRunning}
+                            timerVisible={timerVisible}
+                            result={result}
+                            activeTextID={activeTextID} />
                     </div>
                 </div>
             </main>
