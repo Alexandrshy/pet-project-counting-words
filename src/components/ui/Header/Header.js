@@ -1,6 +1,6 @@
 // @flow
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import Stopwatch from '../Stopwatch/Stopwatch';
 import SelectText from '../SelectText/SelectText';
 import SelectTextList from '../SelectText/SelectTextList';
@@ -34,7 +34,7 @@ class Header extends PureComponent<Props, State> {
             elapsed: 0,
             lastTick: 0
         }
-        
+
         this.handleStart = this.handleStart.bind(this);
         this.handlePause = this.handlePause.bind(this);
         this.handleStop = this.handleStop.bind(this);
@@ -44,7 +44,7 @@ class Header extends PureComponent<Props, State> {
     }
 
     interval: IntervalID;
-    
+
     componentDidMount() {
         this.interval = setInterval(this.tick, 1000);
     }
@@ -52,7 +52,7 @@ class Header extends PureComponent<Props, State> {
     componentWillUnmount() {
         clearInterval(this.interval);
     }
-    
+
     tick: () => void;
     tick() {
         if (this.props.timerRunning) {
@@ -74,7 +74,7 @@ class Header extends PureComponent<Props, State> {
 
         return `${min > 9 ? min : '0' + min}:${sec > 9 ? sec : '0' + sec}`;
     }
-    
+
     handleStart: () => void;
     handleStart() {
         this.props.handleTimerRunning(true);
@@ -84,71 +84,75 @@ class Header extends PureComponent<Props, State> {
             lastTick: Date.now()
         })
     }
-    
+
     handlePause: () => void;
     handlePause() {
         this.props.handleTimerRunning(false);
     }
-    
+
     handleStop: () => void;
     handleStop() {
         this.props.handleTimerRunning(false);
         this.props.handleTimerVisible(false);
 
-        this.setState({ 
+        this.setState({
             elapsed: 0,
             lastTick: 0
-         })
+        })
     }
 
     handleSubmitForm: () => void;
     handleSubmitForm() {
-        document.getElementById('button-submit-form').click();
+        var element = document.getElementById('button-submit-form');
+        if (element) {
+            element.click();
+        }
     }
 
     render() {
         let time = this.format(this.state.elapsed);
 
-        return(
+        return (
             <header className="app-header">
                 <h1 className="app-header-title">Определите скорость чтения</h1>
                 <p className="app-header-text">Выберите язык и сложность текста и нажмите кнопку «Старт», постарайтесь прочитать текст как можно быстрее. Когда вы закончите, нажмите кнопку «Завершить».</p>
                 <div className="app-header-select">
-                    <SelectTextList 
+                    <SelectTextList
                         blocked={(!this.props.timerVisible && !this.props.timerRunning) ? false : true}
                         options={this.props.options}
-                        onRefActiveTextID = {this.props.handleRefActiveTextID} />
+                        onRefActiveTextID={this.props.handleRefActiveTextID} />
                 </div>
                 {(this.props.timerVisible) ?
                     <div className="app-header-timer">
                         {(this.props.timerRunning) ?
-                            <button 
-                                className="button app-header-timer-button" 
+                            <button
+                                className="button app-header-timer-button"
                                 onClick={this.handlePause}>
-                                    <span>Пауза</span>
+                                <span>Пауза</span>
                             </button>
                             :
-                            <button 
-                                className="button app-header-timer-button" 
+                            <button
+                                className="button app-header-timer-button"
                                 onClick={this.handleStart}>
-                                    <span>Старт</span>
+                                <span>Старт</span>
                             </button>
                         }
-                        <button 
-                            className="button app-header-timer-button" 
+                        <button
+                            className="button app-header-timer-button"
                             onClick={this.handleStop}>
-                                <span>Стоп</span>
+                            <span>Стоп</span>
                         </button>
                         <Stopwatch time={time} />
                     </div>
                     :
                     <div className="app-header-timer">
-                        <button 
-                            className="button app-header-timer-button" 
+                        <button
+                            className="button app-header-timer-button"
                             onClick={() => {
                                 this.handleStart();
-                                this.handleSubmitForm()}}>
-                                <span>Старт</span>
+                                this.handleSubmitForm()
+                            }}>
+                            <span>Старт</span>
                         </button>
                     </div>
                 }

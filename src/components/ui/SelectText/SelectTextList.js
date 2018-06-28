@@ -1,6 +1,6 @@
 // @flow
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import './SelectText.css'
 import randomIndex from '../../../func/randomIndex'
 
@@ -37,14 +37,14 @@ type State = {
     }>;
 }
 
-const receivingInfromation = (dataArray: 
-    Array<{id: string,title: string,author: string,text: string}>, 
-    title: string) => 
+const receivingInfromation = (dataArray:
+    Array<{ id: string, title: string, author: string, text: string }>,
+    title: string) =>
     dataArray.reduce((prev, curr) => {
-            return (prev.indexOf(curr[title]) < 0 ? 
-                [...prev, curr[title]] :
-                prev);
-        }, []);
+        return (prev.indexOf(curr[title]) < 0 ?
+            [...prev, curr[title]] :
+            prev);
+    }, []);
 
 class SelectTextList extends PureComponent<Props, State> {
     constructor(props: Props) {
@@ -88,11 +88,14 @@ class SelectTextList extends PureComponent<Props, State> {
 
     handleChange: () => void;
     handleChange(event: SyntheticEvent<HTMLButtonElement>) {
-        let selectName = event.currentTarget.getAttribute('name');
+        console.log('1', event.currentTarget)
+        console.log('2', event.currentTarget.getAttribute('name'))
         let selectValue = event.currentTarget.value;
-        let newData = this.state.fragments.filter((item) =>
-            item[selectName] === selectValue
-        );
+        let newData = this.state.fragments.filter((item) => {
+            if (selectName && typeof selectName === 'string') {
+                return item[selectName] === selectValue
+            }
+        });
 
         if (selectName === 'language') {
             this.setState({
@@ -108,39 +111,39 @@ class SelectTextList extends PureComponent<Props, State> {
     }
 
     render() {
-        return(
+        return (
             <form
-                onSubmit={this.handleSubmit} 
+                onSubmit={this.handleSubmit}
                 className={`select-text-list${this.props.blocked ? ' select-text-list--blocked' : ''}`}>
-                    <div className="select-text-item">
-                        <label class="label">
-                            Язык
-                            <select 
-                                className='select-text select'
-                                value={this.state.language}
-                                name="language" 
-                                onChange={this.handleChange}>
-                                    {this.state.arrayLanguage.map((currentValue, index) =>
-                                        <option key={index} value={currentValue}>{currentValue}</option>
-                                    )}
-                            </select>
-                        </label>
-                    </div>
-                    <div className="select-text-item">
-                        <label class="label">
-                            Уровень
-                            <select 
-                                className='select-text select'
-                                value={this.state.level}
-                                name="level"
-                                onChange={this.handleChange}>
-                                    {this.state.arrayLevel.map((currentValue, index) =>
-                                        <option key={index} value={currentValue}>{currentValue}</option>
-                                    )}
-                            </select>
-                        </label>
-                    </div>
-                    <input id="button-submit-form" className="button is-hidden" type="submit" value="Submit" />
+                <div className="select-text-item">
+                    <label class="label">
+                        Язык
+                            <select
+                            className='select-text select'
+                            value={this.state.language}
+                            name="language"
+                            onChange={this.handleChange}>
+                            {this.state.arrayLanguage.map((currentValue, index) =>
+                                <option key={index} value={currentValue}>{currentValue}</option>
+                            )}
+                        </select>
+                    </label>
+                </div>
+                <div className="select-text-item">
+                    <label class="label">
+                        Уровень
+                            <select
+                            className='select-text select'
+                            value={this.state.level}
+                            name="level"
+                            onChange={this.handleChange}>
+                            {this.state.arrayLevel.map((currentValue, index) =>
+                                <option key={index} value={currentValue}>{currentValue}</option>
+                            )}
+                        </select>
+                    </label>
+                </div>
+                <input id="button-submit-form" className="button is-hidden" type="submit" value="Submit" />
             </form>
         )
     }
