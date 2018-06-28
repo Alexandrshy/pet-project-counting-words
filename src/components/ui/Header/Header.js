@@ -11,13 +11,16 @@ type Props = {
         id: string,
         title: string,
         author: string,
-        text: string
+        text: string,
+        textHTML: string
     }>;
     timerRunning: boolean;
     timerVisible: boolean;
     handleTimerRunning: Function;
     handleTimerVisible: Function;
     handleRefActiveTextID: Function;
+    onChangeNav: Function;
+    onSaveResult: Function;
     activeTextID: string;
 }
 
@@ -36,6 +39,7 @@ class Header extends PureComponent<Props, State> {
         }
 
         this.handleStart = this.handleStart.bind(this);
+        this.handleFinish = this.handleFinish.bind(this);
         this.handlePause = this.handlePause.bind(this);
         this.handleStop = this.handleStop.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
@@ -83,11 +87,34 @@ class Header extends PureComponent<Props, State> {
         this.setState({
             lastTick: Date.now()
         })
+
+        this.props.onChangeNav('stopwatch');
     }
 
     handlePause: () => void;
     handlePause() {
         this.props.handleTimerRunning(false);
+    }
+
+    handleFinish: () => void;
+    handleFinish() {
+        const selectedItem = this.props.options.filter((item) => item.id === this.props.activeTextID);
+        const quantityWordsText = selectedItem[0].words;
+        const quantitySymbolsText = selectedItem[0].text.length + selectedItem[0].title.length + selectedItem[0].author.length;
+        const elapsedMin = Math.floor(Math.floor(this.state.elapsed / 1000)) / 60;
+        const speedReadingSymbols = Math.floor(quantitySymbolsText / elapsedMin);
+        const speedReadingWords = Math.floor(quantityWordsText / elapsedMin);
+
+        this.props.onSaveResult({
+            words: quantityWordsText,
+            symbols: quantitySymbolsText,
+            time: elapsedMin,
+            speedReadingWords,
+            speedReadingSymbols
+        });
+
+        this.props.onChangeNav('result');
+        this.handleStop();
     }
 
     handleStop: () => void;
@@ -110,49 +137,46 @@ class Header extends PureComponent<Props, State> {
     }
 
     render() {
-        let time = this.format(this.state.elapsed);
+        const { options, timerVisible, timerRunning, handleRefActiveTextID } = this.props;
+        const { elapsed } = this.state;
+        let time = this.format(elapsed);
 
         return (
             <header className="app-header">
                 <h1 className="app-header-title">Определите скорость чтения</h1>
-                <p className="app-header-text">Выберите язык и сложность текста и нажмите кнопку «Старт», постарайтесь прочитать текст как можно быстрее. Когда вы закончите, нажмите кнопку «Завершить».</p>
+                <p className="app-header-text">Выберите язык и сложность текста и нажмите кнопку «Начать», постарайтесь прочитать текст как можно быстрее. Когда вы закончите, нажмите кнопку «Завершить».</p>
                 <div className="app-header-select">
                     <SelectTextList
-                        blocked={(!this.props.timerVisible && !this.props.timerRunning) ? false : true}
-                        options={this.props.options}
-                        onRefActiveTextID={this.props.handleRefActiveTextID} />
+                        blocked={(!timerVisible && !timerRunning) ? false : true}
+                        options={options}
+                        onRefActiveTextID={handleRefActiveTextID} />
                 </div>
-                {(this.props.timerVisible) ?
+                {(timerVisible) ?
                     <div className="app-header-timer">
-                        {(this.props.timerRunning) ?
-                            <button
-                                className="button app-header-timer-button"
-                                onClick={this.handlePause}>
-                                <span>Пауза</span>
-                            </button>
-                            :
-                            <button
-                                className="button app-header-timer-button"
-                                onClick={this.handleStart}>
-                                <span>Старт</span>
-                            </button>
-                        }
                         <button
-                            className="button app-header-timer-button"
+                            id="app-button-finish"
+                            className="button is-finish app-header-timer-button"
+                            onClick={this.handleFinish}>
+                            <span>Завершить</span>
+                        </button>
+                        <button
+                            id="app-button-stop"
+                            className="button is-stop app-header-timer-button"
                             onClick={this.handleStop}>
-                            <span>Стоп</span>
+                            <span>Отменить</span>
                         </button>
                         <Stopwatch time={time} />
                     </div>
                     :
                     <div className="app-header-timer">
                         <button
+                            id="app-button-start"
                             className="button app-header-timer-button"
                             onClick={() => {
                                 this.handleStart();
                                 this.handleSubmitForm()
                             }}>
-                            <span>Старт</span>
+                            <span>Начать</span>
                         </button>
                     </div>
                 }

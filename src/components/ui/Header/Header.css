@@ -23,12 +23,12 @@
 }
 
 .app-header-timer {
-    padding-top: 20px;
+    padding-top: 10px;
     border-top: 1px solid rgba(0,0,0,.13);
 }
 
 .app-header-timer-button {
-    margin: 0 10px;
+    margin: 10px;
 }
 
 @media (max-height: 550px) {

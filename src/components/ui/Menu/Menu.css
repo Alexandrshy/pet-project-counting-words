@@ -16,6 +16,10 @@
     background-color: #7160E8;
 }
 
+.nav-item.is-hidden {
+    display: none;
+}
+
 .nav-item.is-active svg {
     fill: #fff;
 }
