@@ -90,8 +90,7 @@ class SelectTextList extends PureComponent<Props, State> {
 
     handleChange: () => void;
     handleChange(event: SyntheticEvent<HTMLButtonElement>) {
-        console.log('1', event.currentTarget)
-        console.log('2', event.currentTarget.getAttribute('name'))
+        let selectName = event.currentTarget.getAttribute('name');
         let selectValue = event.currentTarget.value;
         let newData = this.state.fragments.filter((item) => {
             if (selectName && typeof selectName === 'string') {

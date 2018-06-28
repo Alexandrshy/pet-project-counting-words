@@ -1,6 +1,6 @@
 // @flow
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import MainText from './MainText';
 import MainBook from './MainBook';
 import MainResult from './MainResult';
@@ -18,17 +18,23 @@ type Props = {
     activeTextID: string;
     timerRunning: boolean;
     timerVisible: boolean;
-    result: {};
+    result: {
+        words: number;
+        symbols: number;
+        time: number;
+        speedReadingWords: number;
+        speedReadingSymbols: number;
+    };
 }
 
 class Main extends PureComponent<Props> {
     render() {
-        
+
         return (
             <div className="app-main">
                 <div className={`app-main-item${this.props.navSelected === 'stopwatch' ? ' is-active' : ''}`}>
-                    <MainText 
-                        options={this.props.options} 
+                    <MainText
+                        options={this.props.options}
                         timerRunning={this.props.timerRunning}
                         timerVisible={this.props.timerVisible}
                         activeTextID={this.props.activeTextID} />
@@ -37,7 +43,7 @@ class Main extends PureComponent<Props> {
                     <MainBook />
                 </div>
                 <div className={`app-main-item${this.props.navSelected === 'result' ? ' is-active' : ''}`}>
-                    <MainResult result={this.props.result}/>
+                    <MainResult result={this.props.result} />
                 </div>
             </div>
         )

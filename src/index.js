@@ -1,7 +1,7 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {render} from 'react-dom';
+import React, { PureComponent } from 'react';
+import { render } from 'react-dom';
 import dataArray from './data/fragments';
 import Header from './components/ui/Header/Header';
 import Menu from './components/ui/Menu/Menu';
@@ -15,6 +15,13 @@ type State = {
     timerRunning: boolean;
     timerVisible: boolean;
     activeTextID: string;
+    result: {
+        words: number;
+        symbols: number;
+        time: number;
+        speedReadingWords: number;
+        speedReadingSymbols: number;
+    };
 }
 
 class App extends PureComponent<Props, State> {
@@ -42,7 +49,13 @@ class App extends PureComponent<Props, State> {
         this.handleTimerVisible = this.handleTimerVisible.bind(this);
     }
 
-    handleSaveResult = (data) => {
+    handleSaveResult = (data: {
+        words: number;
+        symbols: number;
+        time: number;
+        speedReadingWords: number;
+        speedReadingSymbols: number;
+    }) => {
         this.setState(prevState => ({
             result: {
                 ...prevState.result,
@@ -57,7 +70,7 @@ class App extends PureComponent<Props, State> {
     }
 
     handleChangeNav = (name) => {
-        this.setState({navSelected: name})
+        this.setState({ navSelected: name })
     }
 
     handleTimerRunning = (item) => {
@@ -79,7 +92,7 @@ class App extends PureComponent<Props, State> {
             <main className="wrapper">
                 <div className="container">
                     <div className="app-grid">
-                        <Header 
+                        <Header
                             options={dataArray}
                             timerRunning={timerRunning}
                             timerVisible={timerVisible}
@@ -89,11 +102,12 @@ class App extends PureComponent<Props, State> {
                             handleRefActiveTextID={this.handleRefActiveTextID}
                             onSaveResult={this.handleSaveResult}
                             onChangeNav={this.handleChangeNav} />
-                        <Menu 
+                        <Menu
                             navSelected={navSelected}
+                            result={result}
                             onNavClick={this.handleNavClick} />
-                        <Main 
-                            options={dataArray} 
+                        <Main
+                            options={dataArray}
                             navSelected={navSelected}
                             timerRunning={timerRunning}
                             timerVisible={timerVisible}

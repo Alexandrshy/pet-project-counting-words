@@ -101,14 +101,15 @@ class Header extends PureComponent<Props, State> {
         const selectedItem = this.props.options.filter((item) => item.id === this.props.activeTextID);
         const quantityWordsText = selectedItem[0].words;
         const quantitySymbolsText = selectedItem[0].text.length + selectedItem[0].title.length + selectedItem[0].author.length;
-        const elapsedMin = Math.floor(Math.floor(this.state.elapsed / 1000)) / 60;
+        const elapsedSec = Math.floor(this.state.elapsed / 1000);
+        const elapsedMin = elapsedSec / 60;
         const speedReadingSymbols = Math.floor(quantitySymbolsText / elapsedMin);
         const speedReadingWords = Math.floor(quantityWordsText / elapsedMin);
 
         this.props.onSaveResult({
             words: quantityWordsText,
             symbols: quantitySymbolsText,
-            time: elapsedMin,
+            time: elapsedSec,
             speedReadingWords,
             speedReadingSymbols
         });
