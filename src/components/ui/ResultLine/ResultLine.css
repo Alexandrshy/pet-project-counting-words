@@ -1,0 +1,32 @@
+.result-line-title {
+    margin: 0 0 5px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.result-line-author {
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: #999;
+}
+
+.result-line-day {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.result-line {
+    display: inline-block;
+    width: 80%;
+    height: 27px;
+    border: 1px solid #7160e8;
+    vertical-align: middle;
+}
+
+.result-line-painted {
+    display: inline-block;
+    height: 25px;
+    background-color: #7160e8;
+}

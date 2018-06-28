@@ -49,6 +49,10 @@
     margin-bottom: 40px;
 }
 
+.app-main-text-result-book {
+    margin-top: 45px;
+}
+
 .app-main-item {
     display: none;
     overflow: hidden;

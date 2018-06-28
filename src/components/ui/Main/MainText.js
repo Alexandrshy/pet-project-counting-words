@@ -1,8 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import './Main.css'
-
+import './Main.css';
 
 type Props = {
     options: Array<{
@@ -10,7 +9,8 @@ type Props = {
         title: string,
         author: string,
         text: string,
-        textHTML: string
+        textHTML: string,
+        img: string
     }>;
     timerRunning: boolean;
     timerVisible: boolean;
@@ -21,11 +21,9 @@ class MainText extends PureComponent<Props> {
     render() {
         const { options, activeTextID, timerRunning, timerVisible } = this.props;
         const activeFragment = options.filter((item) => item.id === activeTextID)[0];
-        console.log('options', activeFragment);
-        console.log('options.img', activeFragment.img);
+
         return (
-            <div className={`app-main-text${timerRunning === true && timerVisible === true ? ' is-visible' : ''}`}>
-                <img src={window.location.origin + activeFragment.img} />
+            <div id="main-text" className={`app-main-text${timerRunning === true && timerVisible === true ? ' is-visible' : ''}`}>
                 <h2>{activeFragment.title}</h2>
                 <h3>{activeFragment.author}</h3>
                 <div dangerouslySetInnerHTML={{ __html: activeFragment.textHTML }} />

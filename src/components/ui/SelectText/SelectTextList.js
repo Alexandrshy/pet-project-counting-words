@@ -13,6 +13,7 @@ type Props = {
         textHTML: string
     }>;
     blocked: boolean;
+    onRefActiveTextID: Function;
 }
 
 type State = {
@@ -21,7 +22,9 @@ type State = {
         title: string,
         author: string,
         text: string,
-        textHTML: string
+        textHTML: string,
+        language: string,
+        level: string,
     }>;
     language: string;
     level: string;
@@ -40,7 +43,15 @@ type State = {
 }
 
 const receivingInfromation = (dataArray:
-    Array<{ id: string, title: string, author: string, text: string }>,
+    Array<{ 
+        id: string, 
+        title: string, 
+        author: string, 
+        text: string, 
+        textHTML: string, 
+        language: string, 
+        level: string 
+    }>,
     title: string) =>
     dataArray.reduce((prev, curr) => {
         return (prev.indexOf(curr[title]) < 0 ?
@@ -81,7 +92,7 @@ class SelectTextList extends PureComponent<Props, State> {
     handleSubmit: () => void;
     handleSubmit(event: SyntheticEvent<HTMLButtonElement>) {
         event.preventDefault();
-        const newData = this.state.fragments.filter((item) => {
+        const newData = this.state.fragments.filter((item: { language: string, level: string }) => {
             return (item.language === this.state.language && item.level === this.state.level);
         });
         const randomIndexArray = randomIndex(1, newData.length);
@@ -124,7 +135,7 @@ class SelectTextList extends PureComponent<Props, State> {
                             value={this.state.language}
                             name="language"
                             onChange={this.handleChange}>
-                            {this.state.arrayLanguage.map((currentValue, index) =>
+                            {this.state.arrayLanguage.map((currentValue: string, index: number) =>
                                 <option key={index} value={currentValue}>{currentValue}</option>
                             )}
                         </select>
@@ -138,7 +149,7 @@ class SelectTextList extends PureComponent<Props, State> {
                             value={this.state.level}
                             name="level"
                             onChange={this.handleChange}>
-                            {this.state.arrayLevel.map((currentValue, index) =>
+                            {this.state.arrayLevel.map((currentValue: string, index: number) =>
                                 <option key={index} value={currentValue}>{currentValue}</option>
                             )}
                         </select>

@@ -2,20 +2,18 @@
 
 import React, {PureComponent} from 'react';
 import './Main.css'
-import BookSearch from '../BookSearch/BookSearch';
 
 
 type Props = {}
 
-class MainBook extends PureComponent<Props> {
+class MainSearch extends PureComponent<Props> {
     render() {
         return (
             <div className="app-main-text is-visible">
-                <h1>Поиск книг</h1>
-                <BookSearch />
+                <h1>Новый таб</h1>
             </div>
         )
     }
 }
 
-export default MainBook;
+export default MainSearch;

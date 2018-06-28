@@ -18,6 +18,10 @@ p {
     line-height: 1.45;
 }
 
+span.special {
+    color: #7160e8;
+}
+
 .button {
     position: relative;
     padding: .8em 1.15em;

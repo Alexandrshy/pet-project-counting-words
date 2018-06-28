@@ -2,7 +2,6 @@
 
 import React, { PureComponent } from 'react';
 import Stopwatch from '../Stopwatch/Stopwatch';
-import SelectText from '../SelectText/SelectText';
 import SelectTextList from '../SelectText/SelectTextList';
 import './Header.css';
 
@@ -111,7 +110,8 @@ class Header extends PureComponent<Props, State> {
             symbols: quantitySymbolsText,
             time: elapsedSec,
             speedReadingWords,
-            speedReadingSymbols
+            speedReadingSymbols,
+            selectedItem
         });
 
         this.props.onChangeNav('result');
@@ -120,6 +120,11 @@ class Header extends PureComponent<Props, State> {
 
     handleStop: () => void;
     handleStop() {
+        let element = document.getElementById('main-text');
+        if (element) {
+            element.scrollTop = 0;
+        }
+
         this.props.handleTimerRunning(false);
         this.props.handleTimerVisible(false);
 
@@ -131,7 +136,7 @@ class Header extends PureComponent<Props, State> {
 
     handleSubmitForm: () => void;
     handleSubmitForm() {
-        var element = document.getElementById('button-submit-form');
+        let element = document.getElementById('button-submit-form');
         if (element) {
             element.click();
         }

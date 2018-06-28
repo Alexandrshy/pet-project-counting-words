@@ -13,6 +13,7 @@ type Props = {
         author: string,
         text: string,
         textHTML: string,
+        img: string
     }>;
     navSelected: string;
     activeTextID: string;
@@ -43,7 +44,9 @@ class Main extends PureComponent<Props> {
                     <MainBook />
                 </div>
                 <div className={`app-main-item${this.props.navSelected === 'result' ? ' is-active' : ''}`}>
-                    <MainResult result={this.props.result} />
+                    <MainResult 
+                        options={this.props.options}
+                        result={this.props.result} />
                 </div>
             </div>
         )
