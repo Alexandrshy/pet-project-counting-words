@@ -25,32 +25,30 @@ type Props = {
         time: number;
         speedReadingWords: number;
         speedReadingSymbols: number;
+        selectedItem: {};
     };
 }
 
-class Main extends PureComponent<Props> {
-    render() {
-
-        return (
-            <div className="app-main">
-                <div className={`app-main-item${this.props.navSelected === 'stopwatch' ? ' is-active' : ''}`}>
-                    <MainText
-                        options={this.props.options}
-                        timerRunning={this.props.timerRunning}
-                        timerVisible={this.props.timerVisible}
-                        activeTextID={this.props.activeTextID} />
-                </div>
-                <div className={`app-main-item${this.props.navSelected === 'list' ? ' is-active' : ''}`}>
-                    <MainBook />
-                </div>
-                <div className={`app-main-item${this.props.navSelected === 'result' ? ' is-active' : ''}`}>
-                    <MainResult 
-                        options={this.props.options}
-                        result={this.props.result} />
-                </div>
+const Main = ({ options, navSelected, activeTextID, timerRunning, timerVisible, result }: Props) => {
+    return (
+        <div className="app-main">
+            <div className={`app-main-item${navSelected === 'stopwatch' ? ' is-active' : ''}`}>
+                <MainText
+                    options={options}
+                    timerRunning={timerRunning}
+                    timerVisible={timerVisible}
+                    activeTextID={activeTextID} />
             </div>
-        )
-    }
+            <div className={`app-main-item${navSelected === 'list' ? ' is-active' : ''}`}>
+                <MainBook result={result} />
+            </div>
+            <div className={`app-main-item${navSelected === 'result' ? ' is-active' : ''}`}>
+                <MainResult 
+                    options={options}
+                    result={result} />
+            </div>
+        </div>
+    )
 }
 
 export default Main;

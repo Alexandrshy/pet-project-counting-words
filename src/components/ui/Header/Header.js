@@ -7,11 +7,14 @@ import './Header.css';
 
 type Props = {
     options: Array<{
-        id: string,
-        title: string,
-        author: string,
-        text: string,
-        textHTML: string
+        id: string, 
+        title: string, 
+        author: string, 
+        text: string, 
+        textHTML: string, 
+        language: string, 
+        level: string,
+        words: string
     }>;
     timerRunning: boolean;
     timerVisible: boolean;
@@ -98,7 +101,7 @@ class Header extends PureComponent<Props, State> {
     handleFinish: () => void;
     handleFinish() {
         const selectedItem = this.props.options.filter((item) => item.id === this.props.activeTextID);
-        const quantityWordsText = selectedItem[0].words;
+        const quantityWordsText = Number(selectedItem[0].words);
         const quantitySymbolsText = selectedItem[0].text.length + selectedItem[0].title.length + selectedItem[0].author.length;
         const elapsedSec = Math.floor(this.state.elapsed / 1000);
         const elapsedMin = elapsedSec / 60;
@@ -145,7 +148,7 @@ class Header extends PureComponent<Props, State> {
     render() {
         const { options, timerVisible, timerRunning, handleRefActiveTextID } = this.props;
         const { elapsed } = this.state;
-        let time = this.format(elapsed);
+        const time = this.format(elapsed);
 
         return (
             <header className="app-header">
@@ -154,7 +157,7 @@ class Header extends PureComponent<Props, State> {
                 <div className="app-header-select">
                     <SelectTextList
                         blocked={(!timerVisible && !timerRunning) ? false : true}
-                        options={options}
+                        options={options} 
                         onRefActiveTextID={handleRefActiveTextID} />
                 </div>
                 {(timerVisible) ?
@@ -167,7 +170,7 @@ class Header extends PureComponent<Props, State> {
                         </button>
                         <button
                             id="app-button-stop"
-                            className="button is-stop app-header-timer-button"
+                            className="button is-cancel app-header-timer-button"
                             onClick={this.handleStop}>
                             <span>Отменить</span>
                         </button>

@@ -1,0 +1,8 @@
+.loader {
+    display: none;
+    text-align: center;
+}
+
+.loader.is-visible {
+    display: block;
+}

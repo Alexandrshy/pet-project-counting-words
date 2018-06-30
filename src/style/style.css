@@ -36,7 +36,7 @@ span.special {
     background-color: #4caf50;
 }
 
-.button.is-stop {
+.button.is-cancel {
     border: .2em solid #f44336;
     background-color: #f44336;
 }

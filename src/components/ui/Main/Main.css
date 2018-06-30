@@ -4,8 +4,8 @@
     width: 58.33333%;
 }
 
-.app-main:before, 
-.app-main:after {
+.app-main-item:before, 
+.app-main-item:after {
     content: '';
     z-index: 1;
     position: absolute;
@@ -17,7 +17,7 @@
     background-color: #fff;
 }
 
-.app-main:after {
+.app-main-item:after {
     top: auto;
     bottom: 0;
 }
@@ -28,6 +28,10 @@
     filter: blur(5px);
     transition: filter .3s;
     overflow: hidden;
+}
+
+.app-main-text.app-main-text--incr-padding {
+    padding-bottom: 70px;
 }
 
 .app-main-text.is-visible {

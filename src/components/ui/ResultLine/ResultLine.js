@@ -1,7 +1,13 @@
 import React from 'react';
 import './ResultLine.css'
 
-const ResultLine = ({title = '', author = '', day = 1}: {title: string, author: string, day: number}) =>
+type Props = {
+    title: string;
+    author: string;
+    day: number;
+}
+
+const ResultLine = ({ title = '', author = '', day = 1 }: Props) =>
     <div className="result-line-wrapper">
         <h4 className="result-line-title">{title}</h4>
         <p className="result-line-author">{author}</p>

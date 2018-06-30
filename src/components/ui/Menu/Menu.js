@@ -6,7 +6,13 @@ import IconList from '../Icon/IconList';
 import IconResult from '../Icon/IconResult';
 import './Menu.css';
 
-const Menu = ({ onNavClick = f => f, navSelected, result }: { onNavClick: Function, navSelected: string, result: {} }) =>
+type Props = {
+    onNavClick: Function;
+    navSelected: string;
+    result: { words: number };
+}
+
+const Menu = ({ onNavClick = f => f, navSelected, result }: Props) =>
     <nav className="app-menu">
         <ul className="nav-list">
             <li className={`nav-item${navSelected === 'stopwatch' ? ' is-active' : ''}`}>

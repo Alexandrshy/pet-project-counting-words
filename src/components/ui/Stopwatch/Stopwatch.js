@@ -3,8 +3,11 @@
 import React from 'react';
 import './Stopwatch.css'
 
-const Stopwatch = ({time}: {time: string}) => {
+type Props = {
+    time: string;
+}
 
+const Stopwatch = ({ time = '00:00' }: Props) => {
     return(
         <div className="app-stopwatch">
             <div className="app-stopwatch-time">{time}</div>

@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import './Main.css';
 
 type Props = {
     options: Array<{
@@ -17,19 +16,16 @@ type Props = {
     activeTextID: string;
 }
 
-class MainText extends PureComponent<Props> {
-    render() {
-        const { options, activeTextID, timerRunning, timerVisible } = this.props;
-        const activeFragment = options.filter((item) => item.id === activeTextID)[0];
+const MainText = ({ options, timerRunning, timerVisible, activeTextID }: Props) => {
+    const activeFragment = options.filter((item) => item.id === activeTextID)[0];
 
-        return (
-            <div id="main-text" className={`app-main-text${timerRunning === true && timerVisible === true ? ' is-visible' : ''}`}>
-                <h2>{activeFragment.title}</h2>
-                <h3>{activeFragment.author}</h3>
-                <div dangerouslySetInnerHTML={{ __html: activeFragment.textHTML }} />
-            </div>
-        )
-    }
+    return (
+        <div id="main-text" className={`app-main-text${timerRunning === true && timerVisible === true ? ' is-visible' : ''}`}>
+            <h2>{activeFragment.title}</h2>
+            <h3>{activeFragment.author}</h3>
+            <div dangerouslySetInnerHTML={{ __html: activeFragment.textHTML }} />
+        </div>
+    )
 }
 
 export default MainText;

@@ -2,15 +2,19 @@
 
 import React, { PureComponent } from 'react';
 import './SelectText.css'
-import randomIndex from '../../../func/randomIndex'
+import randomIndex from '../../../func/randomIndex';
+import receivingInfromation from '../../../func/receivingInfromation';
 
 type Props = {
     options: Array<{
-        id: string,
-        title: string,
-        author: string,
-        text: string,
-        textHTML: string
+        id: string, 
+        title: string, 
+        author: string, 
+        text: string, 
+        textHTML: string, 
+        language: string, 
+        level: string,
+        words: string
     }>;
     blocked: boolean;
     onRefActiveTextID: Function;
@@ -25,39 +29,13 @@ type State = {
         textHTML: string,
         language: string,
         level: string,
+        words: string
     }>;
     language: string;
     level: string;
-    arrayLanguage: Array<{
-        id: string,
-        title: string,
-        author: string,
-        text: string
-    }>;
-    arrayLevel: Array<{
-        id: string,
-        title: string,
-        author: string,
-        text: string
-    }>;
+    arrayLanguage: Array<string>;
+    arrayLevel: Array<string>;
 }
-
-const receivingInfromation = (dataArray:
-    Array<{ 
-        id: string, 
-        title: string, 
-        author: string, 
-        text: string, 
-        textHTML: string, 
-        language: string, 
-        level: string 
-    }>,
-    title: string) =>
-    dataArray.reduce((prev, curr) => {
-        return (prev.indexOf(curr[title]) < 0 ?
-            [...prev, curr[title]] :
-            prev);
-    }, []);
 
 class SelectTextList extends PureComponent<Props, State> {
     constructor(props: Props) {

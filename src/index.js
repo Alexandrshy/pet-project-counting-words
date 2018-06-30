@@ -21,6 +21,7 @@ type State = {
         time: number;
         speedReadingWords: number;
         speedReadingSymbols: number;
+        selectedItem: {}
     };
 }
 
@@ -39,6 +40,7 @@ class App extends PureComponent<Props, State> {
                 time: 0,
                 speedReadingWords: 0,
                 speedReadingSymbols: 0,
+                selectedItem: {}
             }
         }
 
