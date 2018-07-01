@@ -5,6 +5,7 @@ import React, {PureComponent } from 'react';
 type Props = {
     onAddBookLog: Function;
     onRemoveBookLog: Function;
+    onNavClick: Function;
     books: Array<{
         id: string;
         title: string;
@@ -24,6 +25,14 @@ class BookList extends PureComponent<Props> {
 
         this.onAddBookLog = this.onAddBookLog.bind(this);
         this.onRemoveBookLog = this.onRemoveBookLog.bind(this);
+        this.onNavClick = this.onNavClick.bind(this);
+    }
+
+    onNavClick: () => void;
+    onNavClick(event: SyntheticEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        const nav = event.currentTarget.getAttribute('name');
+        this.props.onNavClick(nav);
     }
 
     onAddBookLog: () => void;
@@ -58,15 +67,24 @@ class BookList extends PureComponent<Props> {
                                         <p className="search-item-book-authors">{item.authors}</p>
                                         <p className="search-item-book-description">{item.description}</p>
                                         { listLogID.indexOf(item.id) === -1 ?
-                                            <button 
-                                                bookID={item.id}
-                                                className="button search-item-book-button"
-                                                onClick={this.onAddBookLog}><span>Добавить в Список Чтения</span></button>
+                                            <div className="search-item-book-button-wrapper">
+                                                <button 
+                                                    bookID={item.id}
+                                                    className="button search-item-book-button"
+                                                    onClick={this.onAddBookLog}><span>Добавить в Список Чтения</span></button>
+                                            </div>
                                             :
-                                            <button 
-                                                bookID={item.id}
-                                                className="button is-cancel search-item-book-button"
-                                                onClick={this.onRemoveBookLog}><span>Удалить из списка</span></button>
+                                            <div className="search-item-book-button-wrapper">
+                                                <button 
+                                                    bookID={item.id}
+                                                    name="bookLog"
+                                                    className="button is-success search-item-book-button"
+                                                    onClick={this.onNavClick}><span>Перейти в журнал</span></button>
+                                                <button 
+                                                    bookID={item.id}
+                                                    className="button is-cancel search-item-book-button"
+                                                    onClick={this.onRemoveBookLog}><span>Удалить из списка</span></button>
+                                            </div>
                                         }
                                     </div>
                                 </div>

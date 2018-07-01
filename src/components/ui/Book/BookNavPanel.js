@@ -1,13 +1,21 @@
+// @flow
+
 import React, {PureComponent} from 'react';
 
+type Props = {
+    onNavClick: Function;
+    navSelected: string;
+}
+
 class BookNavPanel extends PureComponent<Props> {
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
 
         this.handleNavClick = this.handleNavClick.bind(this);
     }
 
-    handleNavClick(event) {
+    handleNavClick: () => void;
+    handleNavClick(event: SyntheticEvent<HTMLButtonElement>) {
         event.preventDefault();
         const nav = event.currentTarget.getAttribute('name');
         this.props.onNavClick(nav);

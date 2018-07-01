@@ -10,6 +10,7 @@ type Props = {
     onChangeBookSearchList: Function;
     onAddBookLog: Function;
     onRemoveBookLog: Function;
+    onNavClick: Function;
     books: Array<{
         id: string;
         title: string;
@@ -65,7 +66,7 @@ class BookSearch extends PureComponent<Props, State> {
     }
 
     render() {
-        const { onAddBookLog, onRemoveBookLog, books, listLogID, navSelected } = this.props;
+        const { onAddBookLog, onRemoveBookLog, onNavClick, books, listLogID, navSelected } = this.props;
         const { emptyResult, loading } = this.state;
 
         return (
@@ -83,7 +84,8 @@ class BookSearch extends PureComponent<Props, State> {
                     listLogID={listLogID} 
                     emptyResult={this.state.emptyResult}
                     onAddBookLog={onAddBookLog}
-                    onRemoveBookLog={onRemoveBookLog} />
+                    onRemoveBookLog={onRemoveBookLog}
+                    onNavClick={onNavClick} />
             </div>
         )
     }

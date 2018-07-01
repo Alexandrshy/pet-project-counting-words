@@ -164,7 +164,7 @@ class Header extends PureComponent<Props, State> {
                     <div className="app-header-timer">
                         <button
                             id="app-button-finish"
-                            className="button is-finish app-header-timer-button"
+                            className="button is-success app-header-timer-button"
                             onClick={this.handleFinish}>
                             <span>Завершить</span>
                         </button>
