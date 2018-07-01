@@ -51,6 +51,15 @@ class App extends PureComponent<Props, State> {
         this.handleTimerVisible = this.handleTimerVisible.bind(this);
     }
 
+    handleNavClick = (event) => {
+        event.preventDefault();
+        this.handleChangeNav(event.currentTarget.getAttribute('name'));
+    }
+
+    handleChangeNav = (name) => {
+        this.setState({ navSelected: name })
+    }
+
     handleSaveResult = (data: {
         words: number;
         symbols: number;
@@ -64,15 +73,6 @@ class App extends PureComponent<Props, State> {
                 ...data
             }
         }))
-    }
-
-    handleNavClick = (event) => {
-        event.preventDefault();
-        this.handleChangeNav(event.currentTarget.getAttribute('name'));
-    }
-
-    handleChangeNav = (name) => {
-        this.setState({ navSelected: name })
     }
 
     handleTimerRunning = (item) => {
