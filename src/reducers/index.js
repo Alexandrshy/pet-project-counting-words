@@ -1,44 +1,21 @@
-import { NAV_CHANGE, SAVE_RESULT, REF_TIMER_RUNNING, REF_TIMER_VISIBLE, REF_ACTIVE_TEXT_ID } from '../actions';
+import { combineReducers } from 'redux';
 
-export default reducer(state = {}, actions) {
-    switch (actions.type) {
+import { default as fragments } from './fragments';
+import { default as menu } from './menu';
+import { default as timerRunning } from './timerRunning';
+import { default as timerVisible } from './timerVisible';
+import { default as activeID } from './activeID';
+import { default as result } from './result';
+import { default as emptySearchResult } from './emptySearchResult';
 
-        case NAV_CHANGE:
-            return {
-                ...state,
-                navSelected: actions.name
-            }
-        
-        // case SAVE_RESULT:
-        //     return {
-        //         prevState => ({
-        //             result: {
-        //                 ...prevState.result,
-        //                 ...action.data
-        //             }
-        //         })
-        //     }
-        
-        case REF_TIMER_RUNNING:
-            return {
-                ...state,
-                timerRunning: action.item
-            }
-        
-        case REF_TIMER_VISIBLE:
-            return return {
-                ...state,
-                timerVisible: action.item
-            }
-        
-        case REF_ACTIVE_TEXT_ID:
-            return {
-                ...state,
-                activeTextID: action.activeTextID
-            }
-        
+const reducer = combineReducers({
+    fragments,
+    menu,
+    timerRunning,
+    timerVisible,
+    activeID,
+    result,
+    emptySearchResult
+});
 
-        default:
-            return state;
-    }
-}
+export default reducer;

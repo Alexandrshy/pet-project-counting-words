@@ -18,9 +18,9 @@ type Props = {
     }>;
     timerRunning: boolean;
     timerVisible: boolean;
-    handleTimerRunning: Function;
-    handleTimerVisible: Function;
-    handleRefActiveTextID: Function;
+    onChangeTimerRunning: Function;
+    onChangeTimerVisible: Function;
+    onChangeActiveTextID: Function;
     onChangeNav: Function;
     onSaveResult: Function;
     activeTextID: string;
@@ -83,8 +83,8 @@ class Header extends PureComponent<Props, State> {
 
     handleStart: () => void;
     handleStart() {
-        this.props.handleTimerRunning(true);
-        this.props.handleTimerVisible(true);
+        this.props.onChangeTimerRunning(true);
+        this.props.onChangeTimerVisible(true);
 
         this.setState({
             lastTick: Date.now()
@@ -95,7 +95,7 @@ class Header extends PureComponent<Props, State> {
 
     handlePause: () => void;
     handlePause() {
-        this.props.handleTimerRunning(false);
+        this.props.onChangeTimerRunning(false);
     }
 
     handleFinish: () => void;
@@ -128,8 +128,8 @@ class Header extends PureComponent<Props, State> {
             element.scrollTop = 0;
         }
 
-        this.props.handleTimerRunning(false);
-        this.props.handleTimerVisible(false);
+        this.props.onChangeTimerRunning(false);
+        this.props.onChangeTimerVisible(false);
 
         this.setState({
             elapsed: 0,
@@ -146,7 +146,7 @@ class Header extends PureComponent<Props, State> {
     }
 
     render() {
-        const { options, timerVisible, timerRunning, handleRefActiveTextID } = this.props;
+        const { options, timerVisible, timerRunning, onChangeActiveTextID } = this.props;
         const { elapsed } = this.state;
         const time = this.format(elapsed);
 
@@ -158,7 +158,7 @@ class Header extends PureComponent<Props, State> {
                     <SelectTextList
                         blocked={(!timerVisible && !timerRunning) ? false : true}
                         options={options} 
-                        onRefActiveTextID={handleRefActiveTextID} />
+                        onRefActiveTextID={onChangeActiveTextID} />
                 </div>
                 {(timerVisible) ?
                     <div className="app-header-timer">

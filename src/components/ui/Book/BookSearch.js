@@ -22,12 +22,11 @@ type Props = {
     }>;
     listLogID: Array<string>;
     navSelected: string;
-
 }
 
 type State = {
     emptyResult: boolean;
-    loading: boolean;
+    loading: boolean; 
 }
 
 class BookSearch extends PureComponent<Props, State> {
@@ -40,12 +39,18 @@ class BookSearch extends PureComponent<Props, State> {
         }
 
         this.handleLoading = this.handleLoading.bind(this);
+        this.handleEmptyResult = this.handleEmptyResult.bind(this);
         this.handleBookList = this.handleBookList.bind(this);
     }
 
     handleLoading: () => void;
     handleLoading(loading: boolean) {
         this.setState({loading})
+    }
+    
+    handleEmptyResult: () => void;
+    handleEmptyResult(emptyResult: boolean) {
+        this.setState({emptyResult})
     }
 
     handleBookList: () => void;
@@ -58,10 +63,10 @@ class BookSearch extends PureComponent<Props, State> {
         imageLinks: string;
     }>) {
         if (books.length) {
-            this.setState({emptyResult: false});
+            this.handleEmptyResult(false);
             this.props.onChangeBookSearchList(books);
         } else {
-            this.setState({emptyResult: true});
+            this.handleEmptyResult(true);
         }
     }
 
