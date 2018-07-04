@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 
-import BookList from '../components/ui/BookList/BookList';
-import { } from '../actions';
+import BookList from '../components/ui/Book/BookList';
+import { addBookLog, removeBookLog, refBookNav, addBookList, removeBookList } from '../actions';
 
 const mapStateToProps = state => {
+
     return {
-        books: state.bookSearch,
+        books: state.bookList,
         listLogID: state.listLogID,
         emptyResult: state.emptySearchResult
     }
@@ -13,16 +14,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddBookLog: (id) => {
-            dispatch(addBookLog(id));
-            // dispatch(addListLog(id));
+        onAddBookLog: (id, books) => {
+            dispatch(addBookLog(id, books));
+            dispatch(addBookList(id));
         },
-        onRemoveBookLog: (item) => {
-            // dispatch(removeBookLog(item));
-            // dispatch(removeListLog(id));
+        onRemoveBookLog: (id) => {
+            dispatch(removeBookLog(id));
+            dispatch(removeBookList(id));
         },
         onNavClick: (activeNav) => {
-            dispatch(navBook(activeNav));
+            dispatch(refBookNav(activeNav));
         }
     }
 }

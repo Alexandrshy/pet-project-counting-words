@@ -18,6 +18,10 @@ p {
     line-height: 1.45;
 }
 
+p.is-error {
+    color: #f44336;
+}
+
 span.special {
     color: #7160e8;
 }

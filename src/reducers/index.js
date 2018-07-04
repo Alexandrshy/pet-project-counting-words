@@ -10,6 +10,8 @@ import { default as bookList } from './bookList';
 import { default as emptySearchResult } from './emptySearchResult';
 import { default as loadingSearchResult } from './loadingSearchResult';
 import { default as navBook } from './navBook';
+import { default as bookLog } from './bookLog';
+import { default as listLogID } from './bookListID';
 
 const reducer = combineReducers({
     fragments,
@@ -21,7 +23,9 @@ const reducer = combineReducers({
     bookList,
     emptySearchResult,
     loadingSearchResult,
-    navBook
+    navBook,
+    bookLog,
+    listLogID,
 });
 
 export default reducer;

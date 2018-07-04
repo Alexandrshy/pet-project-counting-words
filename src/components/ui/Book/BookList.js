@@ -38,7 +38,7 @@ class BookList extends PureComponent<Props> {
     onAddBookLog: () => void;
     onAddBookLog(event: SyntheticEvent<HTMLButtonElement>) {
         const bookID = event.currentTarget.getAttribute('bookID');
-        this.props.onAddBookLog(bookID);
+        this.props.onAddBookLog(bookID, this.props.books);
     }
 
     onRemoveBookLog: () => void;
@@ -49,11 +49,11 @@ class BookList extends PureComponent<Props> {
 
     render() {
         const { books, listLogID, emptyResult } = this.props;
-
+        
         return (
             <div className="search-list-book-wrapper">
                 {(emptyResult === true ?
-                    <p>По вашему запросу ничего не найдено. Попробуйте другое название.</p>
+                    <p className="is-error">По вашему запросу ничего не найдено. Попробуйте другое название.</p>
                     :
                     <ul className="search-list-book">
                         {books.map((item) =>

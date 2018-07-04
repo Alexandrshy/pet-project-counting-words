@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import countNumberDays from '../../../func/countNumberDays';
 import ResultLine from '../ResultLine/ResultLine';
 

@@ -21,16 +21,6 @@ type Props = {
 }
 
 type State = {
-    fragments: Array<{
-        id: string,
-        title: string,
-        author: string,
-        text: string,
-        textHTML: string,
-        language: string,
-        level: string,
-        words: string
-    }>;
     language: string;
     level: string;
     arrayLanguage: Array<string>;
@@ -42,7 +32,6 @@ class SelectTextList extends PureComponent<Props, State> {
         super(props);
 
         this.state = {
-            fragments: this.props.options,
             language: '',
             level: '',
             arrayLanguage: receivingInfromation(this.props.options, 'language'),
@@ -56,7 +45,7 @@ class SelectTextList extends PureComponent<Props, State> {
     componentWillMount() {
         let selectedLang = String(this.state.arrayLanguage[0]);
         let selectedLevel = String(this.state.arrayLevel[0]);
-        let newData = this.state.fragments.filter((item) =>
+        let newData = this.props.options.filter((item) =>
             item.language === selectedLang
         );
 
@@ -70,7 +59,7 @@ class SelectTextList extends PureComponent<Props, State> {
     handleSubmit: () => void;
     handleSubmit(event: SyntheticEvent<HTMLButtonElement>) {
         event.preventDefault();
-        const newData = this.state.fragments.filter((item: { language: string, level: string }) => {
+        const newData = this.props.options.filter((item: { language: string, level: string }) => {
             return (item.language === this.state.language && item.level === this.state.level);
         });
         const randomIndexArray = randomIndex(1, newData.length);
@@ -81,7 +70,7 @@ class SelectTextList extends PureComponent<Props, State> {
     handleChange(event: SyntheticEvent<HTMLButtonElement>) {
         let selectName = event.currentTarget.getAttribute('name');
         let selectValue = event.currentTarget.value;
-        let newData = this.state.fragments.filter((item) => {
+        let newData = this.props.options.filter((item) => {
             if (selectName && typeof selectName === 'string') {
                 return item[selectName] === selectValue
             }
