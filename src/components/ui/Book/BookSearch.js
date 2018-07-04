@@ -1,9 +1,11 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import SearchForm from '../SearchForm/SearchForm';
+import React, { PureComponent } from 'react';
+// import SearchForm from '../SearchForm/SearchForm';
 import BookList from '../Book/BookList';
-import Loader from '../Loader/Loader';
+// import Loader from '../Loader/Loader';
+import LoaderContainer from '../../../containers/LoaderContainer';
+import SearchFormContainer from '../../../containers/SearchFormContainer';
 import './BookSearch.css';
 
 type Props = {
@@ -26,49 +28,49 @@ type Props = {
 
 type State = {
     emptyResult: boolean;
-    loading: boolean; 
+    loading: boolean;
 }
 
 class BookSearch extends PureComponent<Props, State> {
     constructor(props: Props) {
         super(props);
 
-        this.state = {
-            emptyResult: false,
-            loading: false
-        }
+        // this.state = {
+        //     emptyResult: false,
+        //     loading: false
+        // }
 
-        this.handleLoading = this.handleLoading.bind(this);
-        this.handleEmptyResult = this.handleEmptyResult.bind(this);
-        this.handleBookList = this.handleBookList.bind(this);
-    }
-
-    handleLoading: () => void;
-    handleLoading(loading: boolean) {
-        this.setState({loading})
-    }
-    
-    handleEmptyResult: () => void;
-    handleEmptyResult(emptyResult: boolean) {
-        this.setState({emptyResult})
+        // this.handleLoading = this.handleLoading.bind(this);
+        // this.handleEmptyResult = this.handleEmptyResult.bind(this);
+        // this.handleBookList = this.handleBookList.bind(this);
     }
 
-    handleBookList: () => void;
-    handleBookList(books: Array<{
-        id: string;
-        title: string;
-        authors: string;
-        description: string;
-        pageCount: string;
-        imageLinks: string;
-    }>) {
-        if (books.length) {
-            this.handleEmptyResult(false);
-            this.props.onChangeBookSearchList(books);
-        } else {
-            this.handleEmptyResult(true);
-        }
-    }
+    // handleLoading: () => void;
+    // handleLoading(loading: boolean) {
+    //     this.setState({ loading })
+    // }
+
+    // handleEmptyResult: () => void;
+    // handleEmptyResult(emptyResult: boolean) {
+    //     this.setState({ emptyResult })
+    // }
+
+    // handleBookList: () => void;
+    // handleBookList(books: Array<{
+    //     id: string;
+    //     title: string;
+    //     authors: string;
+    //     description: string;
+    //     pageCount: string;
+    //     imageLinks: string;
+    // }>) {
+    //     if (books.length) {
+    //         this.handleEmptyResult(false);
+    //         this.props.onChangeBookSearchList(books);
+    //     } else {
+    //         this.handleEmptyResult(true);
+    //     }
+    // }
 
     render() {
         const { onAddBookLog, onRemoveBookLog, onNavClick, books, listLogID, navSelected } = this.props;
@@ -79,14 +81,16 @@ class BookSearch extends PureComponent<Props, State> {
                 <div className="app-main-text-title">
                     <h2>Поиск книг</h2>
                 </div>
-                <SearchForm 
+                {/* <SearchForm
                     updateBookList={this.handleBookList}
-                    updateStatusLoading={this.handleLoading} />
-                <Loader 
-                    loading={loading} />
-                <BookList 
-                    books={books} 
-                    listLogID={listLogID} 
+                    updateStatusLoading={this.handleLoading} /> */}
+                <SearchFormContainer />
+                <LoaderContainer />
+                {/* <Loader
+                    loading={loading} /> */}
+                <BookList
+                    books={books}
+                    listLogID={listLogID}
                     emptyResult={this.state.emptyResult}
                     onAddBookLog={onAddBookLog}
                     onRemoveBookLog={onRemoveBookLog}

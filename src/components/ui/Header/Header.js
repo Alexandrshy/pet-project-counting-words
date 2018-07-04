@@ -7,12 +7,12 @@ import './Header.css';
 
 type Props = {
     options: Array<{
-        id: string, 
-        title: string, 
-        author: string, 
-        text: string, 
-        textHTML: string, 
-        language: string, 
+        id: string,
+        title: string,
+        author: string,
+        text: string,
+        textHTML: string,
+        language: string,
         level: string,
         words: string
     }>;
@@ -152,12 +152,12 @@ class Header extends PureComponent<Props, State> {
 
         return (
             <header className="app-header">
-                <h1 className="app-header-title">Определите скорость чтения</h1>
+                <h1 className="app-header-title">Тест на скорость чтения</h1>
                 <p className="app-header-text">Выберите язык и сложность текста и нажмите кнопку «Начать», постарайтесь прочитать текст как можно быстрее. Когда вы закончите, нажмите кнопку «Завершить».</p>
                 <div className="app-header-select">
                     <SelectTextList
                         blocked={(!timerVisible && !timerRunning) ? false : true}
-                        options={options} 
+                        options={options}
                         onRefActiveTextID={onChangeActiveTextID} />
                 </div>
                 {(timerVisible) ?

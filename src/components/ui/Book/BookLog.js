@@ -1,10 +1,10 @@
 // @flow
 
-import React, {PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import countNumberDays from '../../../func/countNumberDays';
 import ResultLine from '../ResultLine/ResultLine';
 
-type Props = { 
+type Props = {
     result: {
         words: number;
         symbols: number;
@@ -45,10 +45,10 @@ class BookLog extends PureComponent<Props> {
         const totalWords = Number(bookList.reduce((acc: number, book) => acc + Number(book.pageCount), 0)) * wordsPage;
         const totalMin = Math.floor(totalWords / result.speedReadingWords);
 
-        return(
+        return (
             <div className={`log-list-book-wrapper book-block-item${navSelected === 'bookLog' ? ' is-active' : ''}`}>
                 <div className="app-main-text-title">
-                    <h2>Журнал чтения</h2>
+                    <h2>Коллекция</h2>
                 </div>
                 {result.speedReadingWords > 0 ?
                     <div className="app-main-text-result-book">
@@ -56,11 +56,11 @@ class BookLog extends PureComponent<Props> {
                         <ul className="search-list-book">
                             {bookList.map((item) =>
                                 <li className="search-item-book" key={item.id}>
-                                    <ResultLine 
-                                        title={item.title} 
+                                    <ResultLine
+                                        title={item.title}
                                         author={item.authors}
                                         day={countNumberDays(60, result.speedReadingWords, Number(item.pageCount) * wordsPage)} />
-                                    <button 
+                                    <button
                                         bookID={item.id}
                                         className="button-delete-book"
                                         onClick={this.onRemoveBookLog}>

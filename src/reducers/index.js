@@ -6,7 +6,10 @@ import { default as timerRunning } from './timerRunning';
 import { default as timerVisible } from './timerVisible';
 import { default as activeID } from './activeID';
 import { default as result } from './result';
+import { default as bookList } from './bookList';
 import { default as emptySearchResult } from './emptySearchResult';
+import { default as loadingSearchResult } from './loadingSearchResult';
+import { default as navBook } from './navBook';
 
 const reducer = combineReducers({
     fragments,
@@ -15,7 +18,10 @@ const reducer = combineReducers({
     timerVisible,
     activeID,
     result,
-    emptySearchResult
+    bookList,
+    emptySearchResult,
+    loadingSearchResult,
+    navBook
 });
 
 export default reducer;

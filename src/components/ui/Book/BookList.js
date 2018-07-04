@@ -1,6 +1,6 @@
 // @flow
 
-import React, {PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 
 type Props = {
     onAddBookLog: Function;
@@ -50,11 +50,11 @@ class BookList extends PureComponent<Props> {
     render() {
         const { books, listLogID, emptyResult } = this.props;
 
-        return(
+        return (
             <div className="search-list-book-wrapper">
                 {(emptyResult === true ?
                     <p>По вашему запросу ничего не найдено. Попробуйте другое название.</p>
-                :
+                    :
                     <ul className="search-list-book">
                         {books.map((item) =>
                             <li className="search-item-book" key={item.id}>
@@ -66,24 +66,24 @@ class BookList extends PureComponent<Props> {
                                         <p className="search-item-book-title">{item.title}</p>
                                         <p className="search-item-book-authors">{item.authors}</p>
                                         <p className="search-item-book-description">{item.description}</p>
-                                        { listLogID.indexOf(item.id) === -1 ?
+                                        {listLogID.indexOf(item.id) === -1 ?
                                             <div className="search-item-book-button-wrapper">
-                                                <button 
+                                                <button
                                                     bookID={item.id}
                                                     className="button search-item-book-button"
-                                                    onClick={this.onAddBookLog}><span>Добавить в Список Чтения</span></button>
+                                                    onClick={this.onAddBookLog}><span>Добавить в коллекцию</span></button>
                                             </div>
                                             :
                                             <div className="search-item-book-button-wrapper">
-                                                <button 
+                                                <button
                                                     bookID={item.id}
                                                     name="bookLog"
                                                     className="button is-success search-item-book-button"
-                                                    onClick={this.onNavClick}><span>Перейти в журнал</span></button>
-                                                <button 
+                                                    onClick={this.onNavClick}><span>Перейти в коллекцию</span></button>
+                                                <button
                                                     bookID={item.id}
                                                     className="button is-cancel search-item-book-button"
-                                                    onClick={this.onRemoveBookLog}><span>Удалить из списка</span></button>
+                                                    onClick={this.onRemoveBookLog}><span>Удалить</span></button>
                                             </div>
                                         }
                                     </div>
@@ -95,6 +95,6 @@ class BookList extends PureComponent<Props> {
             </div>
         )
     }
-} 
+}
 
 export default BookList;

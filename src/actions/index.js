@@ -35,3 +35,8 @@ export {
     addBookLog,
     removeBookLog
 } from './book';
+
+export {
+    REF_BOOK_NAV,
+    refBookNav
+} from './bookNav';
