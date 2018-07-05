@@ -1,6 +1,12 @@
+// @flow
+
 import { LOADING_SEARCH_RESULT } from '../actions';
 
-function reducer(state = false, action) {
+type State = boolean;
+type LoadingAction = { type: 'LOADING_SEARCH_RESULT', loadingSearchResult: boolean }
+type Action = LoadingAction;
+
+function reducer(state: State = false, action: Action): State {
     switch (action.type) {
         
         case LOADING_SEARCH_RESULT:

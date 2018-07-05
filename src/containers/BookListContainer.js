@@ -1,3 +1,5 @@
+// @flow
+
 import { connect } from 'react-redux';
 
 import BookList from '../components/ui/Book/BookList';

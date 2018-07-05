@@ -1,3 +1,5 @@
+// @flow
+
 import { connect } from 'react-redux'; 
 
 import Menu from '../components/ui/Menu/Menu';

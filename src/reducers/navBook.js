@@ -1,6 +1,12 @@
+// @flow
+
 import { REF_BOOK_NAV } from '../actions';
 
-function reducer(state = 'bookSearch', action) {
+type State = string;
+type RefAction = { type: 'REF_BOOK_NAV', navBook: string }
+type Action = RefAction;
+
+function reducer(state: State = 'bookSearch', action: Action): State {
     switch (action.type) {
 
         case REF_BOOK_NAV:

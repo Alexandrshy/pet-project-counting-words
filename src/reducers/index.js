@@ -1,3 +1,5 @@
+// @flow
+
 import { combineReducers } from 'redux';
 
 import { default as fragments } from './fragments';

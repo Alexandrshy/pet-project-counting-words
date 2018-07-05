@@ -1,7 +1,9 @@
+// @flow
+
 import { connect } from 'react-redux';
 
 import BookLog from '../components/ui/Book/BookLog';
-import { removeBookLog, removeBookList } from '../actions';
+import { removeBookLog, removeBookList, refBookNav } from '../actions';
 
 const mapStateToProps = state => {
 
@@ -14,9 +16,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRemoveBookLog: (id) => {
+        onRemoveBookLog: (id, book) => {
             dispatch(removeBookLog(id));
             dispatch(removeBookList(id));
+            if (book.length <= 1) {
+                dispatch(refBookNav('bookSearch'));
+            } 
         }
     }
 }

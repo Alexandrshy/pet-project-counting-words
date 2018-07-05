@@ -100,25 +100,27 @@ class Header extends PureComponent<Props, State> {
 
     handleFinish: () => void;
     handleFinish() {
-        const selectedItem = this.props.options.filter((item) => item.id === this.props.activeTextID);
-        const quantityWordsText = Number(selectedItem[0].words);
-        const quantitySymbolsText = selectedItem[0].text.length + selectedItem[0].title.length + selectedItem[0].author.length;
         const elapsedSec = Math.floor(this.state.elapsed / 1000);
-        const elapsedMin = elapsedSec / 60;
-        const speedReadingSymbols = Math.floor(quantitySymbolsText / elapsedMin);
-        const speedReadingWords = Math.floor(quantityWordsText / elapsedMin);
-
-        this.props.onSaveResult({
-            words: quantityWordsText,
-            symbols: quantitySymbolsText,
-            time: elapsedSec,
-            speedReadingWords,
-            speedReadingSymbols,
-            selectedItem
-        });
-
-        this.props.onChangeNav('result');
         this.handleStop();
+        if (elapsedSec > 0) {
+            const selectedItem = this.props.options.filter((item) => item.id === this.props.activeTextID);
+            const quantityWordsText = Number(selectedItem[0].words);
+            const quantitySymbolsText = selectedItem[0].text.length + selectedItem[0].title.length + selectedItem[0].author.length;
+            const elapsedMin = elapsedSec / 60;
+            const speedReadingSymbols = Math.floor(quantitySymbolsText / elapsedMin);
+            const speedReadingWords = Math.floor(quantityWordsText / elapsedMin);
+    
+            this.props.onSaveResult({
+                words: quantityWordsText,
+                symbols: quantitySymbolsText,
+                time: elapsedSec,
+                speedReadingWords,
+                speedReadingSymbols,
+                selectedItem
+            });
+    
+            this.props.onChangeNav('result');
+        }
     }
 
     handleStop: () => void;

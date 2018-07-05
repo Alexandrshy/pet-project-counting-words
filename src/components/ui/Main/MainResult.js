@@ -28,7 +28,7 @@ const MainResult = ({ options, result }: Props) => {
     const sec = time;
     const min = Math.floor(time / 60);
     const timetring = `${min > 9 ? min : '0' + min}:${sec > 9 ? sec : '0' + sec}`;
-
+    
     return (
         <div className="app-main-text is-visible">
             <div className="app-main-text-title">

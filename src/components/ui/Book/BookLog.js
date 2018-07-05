@@ -36,7 +36,7 @@ class BookLog extends PureComponent<Props> {
     onRemoveBookLog: () => void;
     onRemoveBookLog(event: SyntheticEvent<HTMLButtonElement>) {
         const bookID = event.currentTarget.getAttribute('bookID');
-        this.props.onRemoveBookLog(bookID);
+        this.props.onRemoveBookLog(bookID, this.props.bookList);
     }
 
     render() {

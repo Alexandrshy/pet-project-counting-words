@@ -1,3 +1,5 @@
+// @flow
+
 import { connect } from 'react-redux';
 
 import Loader from '../components/ui/Loader/Loader';

@@ -1,3 +1,5 @@
+// @flow
+
 export {
     REF_ACTIVE_TEXT_ID,
     refActiveTextID

@@ -40,7 +40,7 @@ const Main = ({ options, navSelected, activeTextID, timerRunning, timerVisible, 
                     activeTextID={activeTextID} />
             </div>
             <div className={`app-main-item${navSelected === 'list' ? ' is-active' : ''}`}>
-                <MainBook result={result} />
+                <MainBook />
             </div>
             <div className={`app-main-item${navSelected === 'result' ? ' is-active' : ''}`}>
                 <MainResult 
