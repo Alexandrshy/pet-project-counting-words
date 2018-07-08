@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import MainText from './MainText';
 import MainBook from './MainBook';
 import MainResult from './MainResult';

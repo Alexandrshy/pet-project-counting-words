@@ -6,6 +6,14 @@ import { v4 } from 'uuid';
 type Props = {
     updateStatusLoading: Function;
     updateBookList: Function;
+    bookList: Array<{
+        id: string,
+        title: string,
+        author: string,
+        text: string,
+        textHTML: string,
+        img: string
+    }>;
 }
 
 type State = {
@@ -71,6 +79,8 @@ class SearchForm extends PureComponent<Props, State> {
     }
 
     render() {
+        const { bookList } = this.props
+
         return (
             <div className="search-form-wrpper">
                 <form
@@ -89,7 +99,11 @@ class SearchForm extends PureComponent<Props, State> {
                         form="search-form"
                         value="Submit"><span>Найти</span></button>
                 </form>
-                <p>Найдите интересующие вас книги и добавьте их в собственную коллекцию.</p>
+                {(bookList.length === 0 ? 
+                    <p>Найдите интересующие вас книги и добавьте их в собственную коллекцию.</p>
+                    :
+                    ''
+                )}
             </div>
         )
     }

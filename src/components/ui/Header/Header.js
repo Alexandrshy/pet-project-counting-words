@@ -72,7 +72,7 @@ class Header extends PureComponent<Props, State> {
         }
     }
 
-    format: () => string;
+    format: (ms: number) => string;
     format(ms: number) {
         let totalSec = Math.floor(ms / 1000);
         let min = Math.floor(totalSec / 60);

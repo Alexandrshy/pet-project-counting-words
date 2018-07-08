@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import BookListContainer from '../../../containers/BookListContainer';
 import LoaderContainer from '../../../containers/LoaderContainer';
 import SearchFormContainer from '../../../containers/SearchFormContainer';

@@ -5,3 +5,14 @@
 .app-stopwatch-time {
     font-size: 24px;
 }
+
+@media (max-width: 1024px) {
+    
+    .app-stopwatch {
+        margin-top: 10px;
+    }
+
+    .app-stopwatch-time {
+        font-size: 20px;
+    }
+}

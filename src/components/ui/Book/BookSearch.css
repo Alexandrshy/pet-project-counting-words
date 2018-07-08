@@ -11,8 +11,8 @@ button.search-button {
 input.search-input {
     width: calc(100% - 100px);
     height: 50px;
-    padding: .8em 1.15em;
-    border: .2em solid #7160e8;
+    padding: 12px 18px;
+    border: 3px solid #7160e8;
     border-right: 0;
     border-radius: 0;
     vertical-align: top;
@@ -77,13 +77,14 @@ input.search-input {
 }
 
 .search-item-book-button-wrapper {
-    margin: 0 -5px;
+    margin: -5px;
 }
 
 .button.search-item-book-button {
-    padding: .6em 1em;
-    margin: 0 5px;
+    padding: 8px 14px;
+    margin: 5px;
     font-size: 14px;
+    border-width: 2.5px;
 }
 
 .book-block-item {
@@ -124,4 +125,56 @@ input.search-input {
 .button-delete-book svg {
     width: 100%;
     height: 100%;
+}
+
+@media (max-width: 1024px) {
+
+    .search-form {
+        margin-bottom: 15px;
+    }
+
+    input.search-input {
+        width: calc(100% - 80px);
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    button.search-button {
+        width: 80px;
+        padding: 12px 5px;
+    }
+
+    .search-list-book {
+        margin-bottom: 20px;
+    }
+
+    .search-item-book {
+        padding: 15px 0;
+    }
+
+    .search-item-book-text {
+        padding: 0 0 0 15px;
+    }
+
+    .search-item-book-title {
+        margin-bottom: 8px;
+        font-size: 18px;
+    }
+
+    .search-item-book-authors {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .search-item-book-description {
+        margin-bottom: 10px;
+    }
+
+    .book-nav-panel {
+        margin-top: 20px;
+    }
+    
+    .button.search-item-book-button span {
+        font-size: 14px;
+    }
 }

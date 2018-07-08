@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 
 import reducer from './reducers';
 import dataStore from './data/dataStore';
-import './style/style.css';
 import App from './components/ui/App/App';
+import './style/style.css';
 
 const store = createStore(reducer, dataStore);
 

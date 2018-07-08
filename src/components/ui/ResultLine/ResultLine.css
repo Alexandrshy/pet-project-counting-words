@@ -31,3 +31,15 @@
     height: 25px;
     background-color: #7160e8;
 }
+
+@media (max-width: 1024px) {
+
+    .result-line {
+        width: 70%;
+    }
+
+    .result-line-day {
+        width: 30%;
+        font-size: 14px;
+    }
+}

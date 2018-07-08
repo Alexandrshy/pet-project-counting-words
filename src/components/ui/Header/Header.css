@@ -7,12 +7,12 @@
 }
 
 .app-header-title {
-    font-size: 2.2rem;
+    font-size: 35px;
     margin-bottom: 25px;
 }
 
 .app-header-text {
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1.45;
     color: #d1cdee;
 }
@@ -36,5 +36,39 @@
     .app-header {
         height: 100vh;
         overflow: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .app-header {
+        width: 100%;
+        padding: 25px 20px 15px;
+    }
+
+    .app-header-title {
+        font-size: 28px;
+        margin-bottom: 15px;    
+    }
+
+    .app-header-select {
+        margin-bottom: 20px;
+    }
+
+    .app-header-timer {
+        z-index: 10;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        width: 100%;
+        max-width: 480px;
+        padding: 10px 0;
+        background: #6052c5;
+        border: 0;
+        transform: translate(-50%,0)
+    }
+
+    .app-header-timer-button {
+        margin: 0 5px;
     }
 }

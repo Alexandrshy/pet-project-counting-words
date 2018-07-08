@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import SearchForm from '../components/ui/SearchForm/SearchForm';
 import { refLoadingSearchResult, refBookList, fefEmptySearchResult } from '../actions';
 
+const mapStateToProps = state => {
+    return {
+        bookList: state.bookList
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         updateBookList: (book) => {
@@ -21,6 +27,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const SearchFormContainer = connect(null, mapDispatchToProps)(SearchForm);
+const SearchFormContainer = connect(mapStateToProps, mapDispatchToProps)(SearchForm);
 
 export default SearchFormContainer

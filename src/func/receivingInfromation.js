@@ -1,4 +1,3 @@
-
 // @flow
 
 const receivingInfromation = (dataArray: Array<{ 

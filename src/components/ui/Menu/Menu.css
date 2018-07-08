@@ -49,3 +49,16 @@
 .nav-button svg {
     opacity: 0.85;
 }
+
+@media (max-width: 1024px) {
+
+    .nav-item {
+        display: inline-block;
+        width: 33.333%;
+        vertical-align: top;
+    }
+
+    .nav-button {
+        height: 100px;
+    }
+}

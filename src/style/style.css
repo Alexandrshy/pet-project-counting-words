@@ -14,7 +14,7 @@ h1 {
 }
 
 p {
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1.45;
 }
 
@@ -28,20 +28,20 @@ span.special {
 
 .button {
     position: relative;
-    padding: .8em 1.15em;
-    border: .2em solid #7160E8;
+    padding: 12px 18px;
+    border: 3px solid #7160E8;
     background-color: #7160E8;
     outline:none;
     cursor: pointer;
 }
 
 .button.is-success {
-    border: .2em solid #4caf50;
+    border: 2.5px solid #4caf50;
     background-color: #4caf50;
 }
 
 .button.is-cancel {
-    border: .2em solid #f44336;
+    border: 2.5px solid #f44336;
     background-color: #f44336;
 }
 
@@ -49,8 +49,8 @@ span.special {
     z-index: 1;
     position: relative;
     color: #fff;
-    line-height: 1em;
-    font-size: 1em;
+    line-height: 16px;
+    font-size: 16px;
 }
 
 .button:before {
@@ -73,20 +73,20 @@ span.special {
 .select {
     display: block;
     min-width: 100px;
-    padding: .4em;
+    padding: 6px;
     margin-top: 5px;
     background-color: #fff;
     border-style: solid;
     border-width: 1px;
     border-color: rgba(0,0,0,.1);
     transition: all .2s;
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1;
     outline: none;
 }
 
 .label {
-    font-size: .85rem;
+    font-size: 13px;
 }
 
 .wrapper {
@@ -144,5 +144,21 @@ span.special {
 
     .container {
         height: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+ 
+    p {
+        margin: 8px 0;
+    }
+    
+    .container {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .app-menu {
+        width: 100%;
     }
 }

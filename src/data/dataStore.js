@@ -125,7 +125,6 @@ const data = {
         speedReadingSymbols: 0,
         selectedItem: {}
     },
-
     emptySearchResult: false,
     loadingSearchResult: false,
     bookSearch: [],
