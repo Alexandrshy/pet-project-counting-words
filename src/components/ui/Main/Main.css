@@ -30,10 +30,6 @@
     overflow: hidden;
 }
 
-.app-main-text.app-main-text--incr-padding {
-    padding-bottom: 70px;
-}
-
 .app-main-text.is-visible {
     filter: blur(0px);
     overflow: auto;

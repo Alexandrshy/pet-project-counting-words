@@ -97,6 +97,7 @@ input.search-input {
 
 .book-nav-panel {
     margin-top: 45px;
+    margin-bottom: 45px;
     text-align: center;
 }
 
@@ -172,6 +173,7 @@ input.search-input {
 
     .book-nav-panel {
         margin-top: 20px;
+        margin-bottom: 0;
     }
     
     .button.search-item-book-button span {

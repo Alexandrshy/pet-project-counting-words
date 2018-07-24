@@ -148,6 +148,10 @@ span.special {
 }
 
 @media (max-width: 1024px) {
+
+    body {
+        overflow-y: scroll;
+    }
  
     p {
         margin: 8px 0;
