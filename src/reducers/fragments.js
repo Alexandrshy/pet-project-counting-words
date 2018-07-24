@@ -1,23 +1,21 @@
 // @flow
 
 type State = Array<{
-    id: string;
-    title: string;
-    authors: string;
-    description: string;
-    pageCount: string;
-    imageLinks: string;
-    inLog: boolean;
+  id: string;
+  title: string;
+  authors: string;
+  description: string;
+  pageCount: string;
+  imageLinks: string;
+  inLog: boolean;
 }>
-type RefAction = { type: string }
-type Action = RefAction;
+type Action = { type: string }
 
-function reducer(state: State = [], action: RefAction): State {
-    switch (action.type) {
-        
-        default:
-            return state;
-    }
+function fragments(state: State = [], action: Action): State {
+  switch (action.type) {
+    default:
+      return state;
+  }
 }
 
-export default reducer;
+export default fragments;

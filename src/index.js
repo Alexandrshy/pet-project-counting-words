@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -15,10 +15,10 @@ const store = createStore(reducer, dataStore);
 const entryPoint = document.getElementById('React-app');
 
 if (entryPoint) {
-    render(
-        <Provider store={store}>
-            <App />
-        </Provider>,
-        entryPoint
-    )
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    entryPoint,
+  );
 }

@@ -1,18 +1,18 @@
 // @flow
 
 import React from 'react';
-import './Stopwatch.css'
+import './Stopwatch.css';
 
 type Props = {
-    time: string;
+  time: string;
 }
 
-const Stopwatch = ({ time = '00:00' }: Props) => {
-    return(
-        <div className="app-stopwatch">
-            <div className="app-stopwatch-time">{time}</div>
-        </div>
-    )
-}
+const Stopwatch = ({ time = '00:00' }: Props) => (
+  <div className="app-stopwatch">
+    <div className="app-stopwatch-time">
+      {time}
+    </div>
+  </div>
+);
 
 export default Stopwatch;

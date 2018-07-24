@@ -3,18 +3,16 @@
 import { LOADING_SEARCH_RESULT } from '../actions';
 
 type State = boolean;
-type LoadingAction = { type: 'LOADING_SEARCH_RESULT', loadingSearchResult: boolean }
-type Action = LoadingAction;
+type Action = { type: 'LOADING_SEARCH_RESULT', loadingSearchResult: boolean };
 
-function reducer(state: State = false, action: Action): State {
-    switch (action.type) {
-        
-        case LOADING_SEARCH_RESULT:
-            return action.loadingSearchResult;
+function loadingSearchResult(state: State = false, action: Action): State {
+  switch (action.type) {
+    case LOADING_SEARCH_RESULT:
+      return action.loadingSearchResult;
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 }
 
-export default reducer;
+export default loadingSearchResult;

@@ -1,53 +1,66 @@
 // @flow
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 type Props = {
-    onNavClick: Function;
-    navSelected: string;
-    bookLog: string;
+  onNavClick: Function;
+  navSelected: string;
+  bookLog: string;
 }
 
 class BookNavPanel extends PureComponent<Props> {
-    constructor(props: Props) {
-        super(props);
+  constructor(props: Props) {
+    super(props);
 
-        this.handleNavClick = this.handleNavClick.bind(this);
-    }
+    this.handleNavClick = this.handleNavClick.bind(this);
+  }
 
-    handleNavClick: () => void;
-    handleNavClick(event: SyntheticEvent<HTMLButtonElement>) {
-        event.preventDefault();
-        const nav = event.currentTarget.getAttribute('name');
-        this.props.onNavClick(nav);
-    }
+  handleNavClick: () => void;
 
-    render() {
-        const { navSelected, bookLog } = this.props;
+  handleNavClick(event: SyntheticEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    const { onNavClick } = this.props;
+    const nav = event.currentTarget.getAttribute('name');
+    onNavClick(nav);
+  }
 
-        return(
-            <div>
-                {bookLog.length ?
-                    <div className="book-nav-panel">
-                        <button 
-                            className={`button${navSelected === 'bookSearch' ? ' is-active' : ''}`} 
-                            name="bookLog" 
-                            onClick={this.handleNavClick}>
-                                <span>Перейти в журнал</span>
-                        </button>
-                        <button 
-                            className={`button${navSelected === 'bookLog' ? ' is-active' : ''}`} 
-                            name="bookSearch" 
-                            onClick={this.handleNavClick}>
-                                <span>Перейти в поиск</span>
-                        </button>
-                    </div>
-                    :
-                    ''
-                }
+  render() {
+    const { navSelected, bookLog } = this.props;
+
+    return (
+      <div>
+        {bookLog.length
+          ? (
+            <div className="book-nav-panel">
+              <button
+                type="button"
+                className={`button${navSelected === 'bookSearch' ? ' is-active' : ''}`}
+                name="bookLog"
+                onClick={this.handleNavClick}
+              >
+                <span>
+                  Перейти в журнал
+                </span>
+              </button>
+              <button
+                type="button"
+                className={`button${navSelected === 'bookLog' ? ' is-active' : ''}`}
+                name="bookSearch"
+                onClick={this.handleNavClick}
+              >
+                <span>
+                  Перейти в поиск
+                </span>
+              </button>
             </div>
-        )
-    }
+          )
+          : (
+            ''
+          )
+        }
+      </div>
+    );
+  }
 }
 
 export default BookNavPanel;

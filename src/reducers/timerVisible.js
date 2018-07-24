@@ -3,18 +3,16 @@
 import { REF_TIMER_VISIBLE } from '../actions';
 
 type State = boolean;
-type RefAction = { type: 'REF_TIMER_VISIBLE', timerVisible: boolean }
-type Action = RefAction;
+type Action = { type: 'REF_TIMER_VISIBLE', timerVisible: boolean };
 
-function reducer(state: State = false, action: Action): State {
-    switch (action.type) {
-        
-        case REF_TIMER_VISIBLE:
-            return action.timerVisible;
+function timerVisible(state: State = false, action: Action): State {
+  switch (action.type) {
+    case REF_TIMER_VISIBLE:
+      return action.timerVisible;
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 }
 
-export default reducer;
+export default timerVisible;
