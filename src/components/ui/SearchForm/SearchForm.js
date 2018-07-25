@@ -1,11 +1,11 @@
 // @flow
 
-import React, { PureComponent } from 'react';
-import { v4 } from 'uuid';
+import React, { PureComponent } from "react";
+import { v4 } from "uuid";
 
 type Props = {
-  updateStatusLoading: Function;
-  updateBookList: Function;
+  updateStatusLoading: Function,
+  updateBookList: Function,
   bookList: Array<{
     id: string,
     title: string,
@@ -13,19 +13,19 @@ type Props = {
     text: string,
     textHTML: string,
     img: string
-  }>;
-}
+  }>
+};
 
 type State = {
-  search: string;
-}
+  search: string
+};
 
 class SearchForm extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      search: '',
+      search: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +34,7 @@ class SearchForm extends PureComponent<Props, State> {
 
   handleChange: () => void;
 
-  handleChange(event: SyntheticEvent<HTMLButtonElement>) {
+  handleChange(event: SyntheticInputEvent<>) {
     const search = event.target.value;
     this.setState({ search });
   }
@@ -49,29 +49,44 @@ class SearchForm extends PureComponent<Props, State> {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}`)
       .then(response => response.json())
       .then(listBook => {
-        const formattedList = (listBook.items ? listBook.items.map(book => {
-          const { title, authors, description, pageCount, imageLinks } = book.volumeInfo
-          const bookID = (book.id ? book.id : v4());
-          const bookTitle = (title ? title : '');
-          const bookAuthors = (authors ? authors : []);
-          const bookDescription = (description ? description : 'Описание отсутствует');
-          const bookPageCount = (pageCount ? pageCount : 0);
-          const bookImageLinks = (imageLinks ? (imageLinks.thumbnail ? imageLinks.thumbnail : '') : '');
-          const inLog = false;
+        const formattedList = listBook.items
+          ? listBook.items.map(book => {
+              const {
+                title,
+                authors,
+                description,
+                pageCount,
+                imageLinks
+              } = book.volumeInfo;
+              const bookID = book.id ? book.id : v4();
+              const bookTitle = title ? title : "";
+              const bookAuthors = authors ? authors : [];
+              const bookDescription = description
+                ? description
+                : "Описание отсутствует";
+              const bookPageCount = pageCount ? pageCount : 0;
+              const bookImageLinks = imageLinks
+                ? imageLinks.thumbnail
+                  ? imageLinks.thumbnail
+                  : ""
+                : "";
+              const inLog = false;
 
-          return {
-            id: bookID,
-            title: bookTitle,
-            authors: bookAuthors.join(' '),
-            description: (bookDescription.length > 150 ? `${bookDescription.slice(0, 147)}...` : bookDescription),
-            pageCount: bookPageCount,
-            imageLinks: bookImageLinks,
-            inLog
-          }
-        }) : []);
-        const filterList = formattedList.filter((book) =>
-          book.pageCount > 0
-        );
+              return {
+                id: bookID,
+                title: bookTitle,
+                authors: bookAuthors.join(" "),
+                description:
+                  bookDescription.length > 150
+                    ? `${bookDescription.slice(0, 147)}...`
+                    : bookDescription,
+                pageCount: bookPageCount,
+                imageLinks: bookImageLinks,
+                inLog
+              };
+            })
+          : [];
+        const filterList = formattedList.filter(book => book.pageCount > 0);
         updateStatusLoading(false);
         updateBookList(filterList);
       })
@@ -104,20 +119,16 @@ class SearchForm extends PureComponent<Props, State> {
             form="search-form"
             value="Submit"
           >
-            <span>
-              Найти
-            </span>
+            <span>Найти</span>
           </button>
         </form>
-        {(bookList.length === 0
-          ? (
-            <p>
-              Найдите интересующие вас книги и добавьте их в собственную коллекцию.
-            </p>
-          )
-          : (
-            ''
-          )
+        {bookList.length === 0 ? (
+          <p>
+            Найдите интересующие вас книги и добавьте их в собственную
+            коллекцию.
+          </p>
+        ) : (
+          ""
         )}
       </div>
     );

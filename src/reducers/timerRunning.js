@@ -1,9 +1,9 @@
 // @flow
 
-import { REF_TIMER_RUNNING } from '../actions';
+import { REF_TIMER_RUNNING } from "../actions";
 
 type State = boolean;
-type Action = { type: 'REF_TIMER_RUNNING', timerRunning: boolean };
+type Action = { type: "REF_TIMER_RUNNING", timerRunning: boolean };
 
 function timerRunning(state: State = false, action: Action): State {
   switch (action.type) {

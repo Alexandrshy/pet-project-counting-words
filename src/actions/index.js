@@ -1,33 +1,24 @@
 // @flow
 
-export {
-  REF_ACTIVE_TEXT_ID,
-  refActiveTextID,
-} from './activeID';
+export { REF_ACTIVE_TEXT_ID, refActiveTextID } from "./activeID";
 
 export {
   REF_TIMER_RUNNING,
   REF_TIMER_VISIBLE,
   refTimerRunning,
-  refTimerVisible,
-} from './timer';
+  refTimerVisible
+} from "./timer";
 
-export {
-  NAV_CHANGE,
-  navChange,
-} from './menu';
+export { NAV_CHANGE, navChange } from "./menu";
 
-export {
-  SAVE_RESULT,
-  saveResult,
-} from './result';
+export { SAVE_RESULT, saveResult } from "./result";
 
 export {
   REF_EMPTY_SEATCH_RESULT,
   fefEmptySearchResult,
   LOADING_SEARCH_RESULT,
-  refLoadingSearchResult,
-} from './searchResult';
+  refLoadingSearchResult
+} from "./searchResult";
 
 export {
   ADD_BOOK_LIST_ID,
@@ -39,10 +30,7 @@ export {
   removeBookList,
   addBookLog,
   refBookList,
-  removeBookLog,
-} from './book';
+  removeBookLog
+} from "./book";
 
-export {
-  REF_BOOK_NAV,
-  refBookNav,
-} from './bookNav';
+export { REF_BOOK_NAV, refBookNav } from "./bookNav";

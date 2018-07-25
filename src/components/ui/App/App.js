@@ -1,23 +1,21 @@
 // @flow
 
-import React from 'react';
+import React from "react";
 
-import MenuContainer from '../../../containers/MenuContainer';
-import HeaderContainer from '../../../containers/HeaderContainer';
-import MainContainer from '../../../containers/MainContainer';
+import MenuContainer from "../../../containers/MenuContainer";
+import HeaderContainer from "../../../containers/HeaderContainer";
+import MainContainer from "../../../containers/MainContainer";
 
 const App = () => (
-  (
-    <main className="wrapper">
-      <div className="container">
-        <div className="app-grid">
-          <HeaderContainer />
-          <MenuContainer />
-          <MainContainer />
-        </div>
+  <main className="wrapper">
+    <div className="container">
+      <div className="app-grid">
+        <HeaderContainer />
+        <MenuContainer />
+        <MainContainer />
       </div>
-    </main>
-  )
+    </div>
+  </main>
 );
 
 export default App;

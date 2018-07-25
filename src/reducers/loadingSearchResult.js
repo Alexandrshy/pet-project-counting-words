@@ -1,9 +1,9 @@
 // @flow
 
-import { LOADING_SEARCH_RESULT } from '../actions';
+import { LOADING_SEARCH_RESULT } from "../actions";
 
 type State = boolean;
-type Action = { type: 'LOADING_SEARCH_RESULT', loadingSearchResult: boolean };
+type Action = { type: "LOADING_SEARCH_RESULT", loadingSearchResult: boolean };
 
 function loadingSearchResult(state: State = false, action: Action): State {
   switch (action.type) {

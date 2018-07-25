@@ -1,9 +1,9 @@
 // @flow
 
-import React, { PureComponent } from 'react';
-import './SelectText.css';
-import randomIndex from '../../../func/randomIndex';
-import receivingInfromation from '../../../func/receivingInfromation';
+import React, { PureComponent } from "react";
+import "./SelectText.css";
+import randomIndex from "../../../func/randomIndex";
+import receivingInfromation from "../../../func/receivingInfromation";
 
 type Props = {
   options: Array<{
@@ -15,27 +15,27 @@ type Props = {
     language: string,
     level: string,
     words: string
-  }>;
-  blocked: boolean;
-  onRefActiveTextID: Function;
-}
+  }>,
+  blocked: boolean,
+  onRefActiveTextID: Function
+};
 
 type State = {
-  language: string;
-  level: string;
-  arrayLanguage: Array<string>;
-  arrayLevel: Array<string>;
-}
+  language: string,
+  level: string,
+  arrayLanguage: Array<string>,
+  arrayLevel: Array<string>
+};
 
 class SelectTextList extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     const { options } = this.props;
     this.state = {
-      language: '',
-      level: '',
-      arrayLanguage: receivingInfromation(options, 'language'),
-      arrayLevel: receivingInfromation(options, 'level'),
+      language: "",
+      level: "",
+      arrayLanguage: receivingInfromation(options, "language"),
+      arrayLevel: receivingInfromation(options, "level")
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,7 +52,7 @@ class SelectTextList extends PureComponent<Props, State> {
     this.setState({
       language: selectedLang,
       level: selectedLevel,
-      arrayLevel: receivingInfromation(newData, 'level'),
+      arrayLevel: receivingInfromation(newData, "level")
     });
   }
 
@@ -62,9 +62,10 @@ class SelectTextList extends PureComponent<Props, State> {
     event.preventDefault();
     const { options, onRefActiveTextID } = this.props;
     const { language, level } = this.state;
-    const newData = options.filter((item: { language: string, level: string }) => (
-      item.language === language && item.level === level
-    ));
+    const newData = options.filter(
+      (item: { language: string, level: string }) =>
+        item.language === language && item.level === level
+    );
     const randomIndexArray = randomIndex(1, newData.length);
     onRefActiveTextID(newData[randomIndexArray - 1].id);
   }
@@ -73,40 +74,37 @@ class SelectTextList extends PureComponent<Props, State> {
 
   handleChange(event: SyntheticEvent<HTMLButtonElement>) {
     const { options } = this.props;
-    const selectName = event.currentTarget.getAttribute('name');
+    const selectName = event.currentTarget.getAttribute("name");
     const selectValue = event.currentTarget.value;
-    const newData = options.filter((item) => {
-      if (selectName && typeof selectName === 'string') {
+    const newData = options.filter(item => {
+      if (selectName && typeof selectName === "string") {
         return item[selectName] === selectValue;
       }
       return false;
     });
 
-    if (selectName === 'language') {
+    if (selectName === "language") {
       this.setState({
         language: selectValue,
-        arrayLevel: receivingInfromation(newData, 'level'),
+        arrayLevel: receivingInfromation(newData, "level")
       });
-    } else if (selectName === 'level') {
+    } else if (selectName === "level") {
       this.setState({
         level: selectValue,
-        arrayLanguage: receivingInfromation(newData, 'language'),
+        arrayLanguage: receivingInfromation(newData, "language")
       });
     }
   }
 
   render() {
     const { blocked } = this.props;
-    const {
-      language,
-      level,
-      arrayLanguage,
-      arrayLevel,
-    } = this.state;
+    const { language, level, arrayLanguage, arrayLevel } = this.state;
     return (
       <form
         onSubmit={this.handleSubmit}
-        className={`select-text-list${blocked ? ' select-text-list--blocked' : ''}`}
+        className={`select-text-list${
+          blocked ? " select-text-list--blocked" : ""
+        }`}
       >
         <div className="select-text-item">
           <label className="label">
@@ -142,7 +140,12 @@ class SelectTextList extends PureComponent<Props, State> {
             </select>
           </label>
         </div>
-        <input id="button-submit-form" className="button is-hidden" type="submit" value="Submit" />
+        <input
+          id="button-submit-form"
+          className="button is-hidden"
+          type="submit"
+          value="Submit"
+        />
       </form>
     );
   }

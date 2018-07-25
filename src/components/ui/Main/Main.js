@@ -1,10 +1,10 @@
 // @flow
 
-import React from 'react';
-import MainText from './MainText';
-import MainBook from './MainBook';
-import MainResult from './MainResult';
-import './Main.css';
+import React from "react";
+import MainText from "./MainText";
+import MainBook from "./MainBook";
+import MainResult from "./MainResult";
+import "./Main.css";
 
 type Props = {
   options: Array<{
@@ -14,20 +14,20 @@ type Props = {
     text: string,
     textHTML: string,
     img: string
-  }>;
-  navSelected: string;
-  activeTextID: string;
-  timerRunning: boolean;
-  timerVisible: boolean;
+  }>,
+  navSelected: string,
+  activeTextID: string,
+  timerRunning: boolean,
+  timerVisible: boolean,
   result: {
-    words: number;
-    symbols: number;
-    time: number;
-    speedReadingWords: number;
-    speedReadingSymbols: number;
-    selectedItem: {};
-  };
-}
+    words: number,
+    symbols: number,
+    time: number,
+    speedReadingWords: number,
+    speedReadingSymbols: number,
+    selectedItem: {}
+  }
+};
 
 const Main = ({
   options,
@@ -35,10 +35,14 @@ const Main = ({
   activeTextID,
   timerRunning,
   timerVisible,
-  result,
+  result
 }: Props) => (
   <div className="app-main">
-    <div className={`app-main-item${navSelected === 'stopwatch' ? ' is-active' : ''}`}>
+    <div
+      className={`app-main-item${
+        navSelected === "stopwatch" ? " is-active" : ""
+      }`}
+    >
       <MainText
         options={options}
         timerRunning={timerRunning}
@@ -46,14 +50,15 @@ const Main = ({
         activeTextID={activeTextID}
       />
     </div>
-    <div className={`app-main-item${navSelected === 'list' ? ' is-active' : ''}`}>
+    <div
+      className={`app-main-item${navSelected === "list" ? " is-active" : ""}`}
+    >
       <MainBook />
     </div>
-    <div className={`app-main-item${navSelected === 'result' ? ' is-active' : ''}`}>
-      <MainResult
-        options={options}
-        result={result}
-      />
+    <div
+      className={`app-main-item${navSelected === "result" ? " is-active" : ""}`}
+    >
+      <MainResult options={options} result={result} />
     </div>
   </div>
 );
